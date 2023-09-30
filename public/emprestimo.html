@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/style/style.css" />
+    <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Empréstimo</title>
+  </head>
+  <body>
+    <header class="cabeca">
+      <img
+        class="logo"
+        src="../src/img/logo.png"
+        alt=""
+        style="margin-top: -2px"
+      />
+    </header>
+
+    <main id="mainEmprestimo">
+      <form
+        id="formEmprestimo"
+        name="formEmprestimo"
+        method="POST"
+        action="../src/php/emprestimo/emprestimos.php"
+      >
+        <label id="labelEmprestimo" for="nomeDoAluno">Nome</label>
+
+        <input
+          name="NomeDoAluno"
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoNome"
+          type="search"
+          required
+          placeholder="Digite um nome"
+        />
+
+        <div id="resultado" class="lista">
+          <li id="lista-resultados"></li>
+        </div>
+
+        <label id="labelEmprestimo" for="nomeDoLivro">Nome do livro</label>
+
+        <input
+          name="NomeDoLivro"
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoNomeDoLivro"
+          placeholder="Digite um livro"
+          type="search"
+          required
+        />
+
+        <div id="resultadoa" class="listaa">
+          <li id="lista-resultadosa"></li>
+        </div>
+
+        <label for="DataDeEmprestimo" id="labelEmprestimo"
+          >Data de empréstimo</label
+        >
+
+        <input
+          name="DataDeEmprestimo"
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoLivro"
+          type="date"
+          required
+        />
+
+        <label for="DataDeEntrega" id="labelEmprestimo">Data de entrega</label>
+
+        <input
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoLivroEntrega"
+          type="date"
+          name="DataDeEntrega"
+          required
+        />
+
+        <label id="labelEmprestimo" for="turmas">Turma</label>
+
+        <select
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoTurma"
+          name="Turmas"
+          id="turmasEscola"
+        >
+          <option disabled selected hidden>Selecione a turma</option>
+          <option value="3TDSA">3°TDS'A'</option>
+          <option value="3TDSB">3°TDS'B'</option>
+          <option value="3MKTA">3°MKT'A'</option>
+          <option value="3MKTB">3°MKT'B'</option>
+          <option value="2TDSA">2°TDS'A'</option>
+          <option value="2TDSB">2°TDS'B'</option>
+          <option value="2MKTA">2°MKT'A'</option>
+          <option value="2MKTB">2°MKT'B'</option>
+          <option value="1TDSA">1°TDS'A'</option>
+          <option value="1TDSB">1°TDS'B'</option>
+          <option value="1MKTA">1°MKT'A'</option>
+          <option value="1MKTB">1°MKT'B'</option>
+        </select>
+
+        <button
+          name="ButEnviar"
+          id="butaoEmprestimo"
+          type="submit"
+          value="ENVIAR"
+        >
+          ENVIAR
+        </button>
+      </form>
+    </main>
+
+    <script>
+      $(document).ready(function () {
+        $("#inputFormEmprestimoNome").keyup(function () {
+          var nome = $(this).val();
+          var listaResultados = $("#lista-resultados");
+          listaResultados.empty(); // Limpa a lista de resultados antes de adicionar novos
+
+          // Verifique se o input está vazio
+          if (nome === "") {
+            return; // Não faça a solicitação AJAX quando o input estiver vazio
+          }
+
+          $.ajax({
+            url: "http://localhost:8090/src/php/buscaRapidaNome.php",
+            method: "POST",
+            data: { nome: nome },
+            success: function (data) {
+              if (data.length > 0) {
+                var nomes = JSON.parse(data); // Parse os resultados como um array JSON
+
+                // Adiciona os nomes à lista
+                for (var i = 0; i < nomes.length; i++) {
+                  var nomeItem = $("<li>" + nomes[i].nome + "</li>");
+                  listaResultados.append(nomeItem);
+
+                  // Adiciona um evento de clique ao nome
+                  nomeItem.click(function () {
+                    $("#inputFormEmprestimoNome").val($(this).text()); // Preenche o input com o nome clicado
+                    listaResultados.empty(); // Limpa a lista de resultados após o clique
+                  });
+                }
+              } else {
+                listaResultados.append("<li>Nenhum resultado encontrado.</li>");
+              }
+            },
+          });
+        });
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $("#inputFormEmprestimoNomeDoLivro").keyup(function () {
+          var titulo = $(this).val();
+          var listaResultados = $("#lista-resultadosa");
+          listaResultados.empty(); // Limpa a lista de resultados antes de adicionar novos
+
+          // Verifique se o input está vazio
+          if (titulo === "") {
+            return; // Não faça a solicitação AJAX quando o input estiver vazio
+          }
+
+          $.ajax({
+            url: "http://localhost:8090/src/php/buscaRapidaTitulo.php",
+            method: "POST",
+            data: { titulo: titulo },
+            success: function (data) {
+              if (data.length > 0) {
+                var titulos = JSON.parse(data); // Parse os resultados como um array JSON
+
+                // Adiciona os titulos à lista
+                for (var i = 0; i < titulos.length; i++) {
+                  var tituloItem = $("<li>" + titulos[i].titulo + "</li>");
+                  listaResultados.append(tituloItem);
+
+                  // Adiciona um evento de clique ao titulo
+                  tituloItem.click(function () {
+                    $("#inputFormEmprestimoNomeDoLivro").val($(this).text()); // Preenche o input com o titulo clicado
+                    listaResultados.empty(); // Limpa a lista de resultados após o clique
+                  });
+                }
+              } else {
+                listaResultados.append("<li>Nenhum resultado encontrado.</li>");
+              }
+            },
+          });
+        });
+      });
+    </script>
+    
+  </body>
+</html>

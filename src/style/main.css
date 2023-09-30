@@ -1,0 +1,15 @@
+body {
+  background-color: aquamarine;
+}
+
+.lista {
+  list-style: none; /* Remove os marcadores de lista */
+  padding: 0; /* Remove o espaçamento interno da lista */
+  margin: 0; /* Remove o espaçamento externo da lista */
+  cursor: pointer;
+}
+
+.lista-resultados li {
+  cursor: pointer; /* Transforma o cursor em uma mão ao passar sobre os itens da lista */
+  padding: 5px; /* Adiciona algum espaçamento entre os itens da lista */
+}
