@@ -1,0 +1,129 @@
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  font-family: "Montserrat-Bold", Helvetica;
+  background-color: #132E35;
+}
+
+.cabeca {
+  background: #132E35;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  position: fixed;
+  z-index: 2;
+}
+
+#mainEmprestimo{
+    display: flex;
+  }
+  
+  #formEmprestimo{
+    border-radius: 30px;
+    margin: auto;
+    margin-top: 4%;
+    display: flex;
+    height: 500px;
+    width: 450px;
+    background:linear-gradient(90deg, rgb(255, 171, 9) 20%, rgba(255, 171, 9, 0.7) 60%, rgba(255, 171, 9, 0) 140%);
+    flex-direction: column;
+    border: solid 1px black;
+  }
+  
+  .inputFormEmprestimo{
+    margin: auto;
+    margin-top: 10px;
+    width: 300px ;
+    height: 30px;
+    border-radius: 10px;
+  }
+  
+  .lista {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .lista-resultados li {
+    cursor: pointer; 
+    padding: 5px; 
+    z-index: 2;
+  }
+  .listaa {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .lista-resultadosa li {
+    cursor: pointer; 
+    padding: 5px; 
+    z-index: 2;
+  }
+  
+  #labelEmprestimo{
+    margin-top: 10px;
+    margin-left: 16%;
+    text-align: left;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700; 
+    font-size: 20px;
+    color: rgb(43, 34, 18);
+  }
+  
+  #butaoEmprestimo{
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700; 
+    font-size: 15px;
+    height: 40px;
+    width: 140px;
+    margin: auto;
+    margin-bottom:10px;
+    border: solid 2px black;
+    border-radius: 10px;
+    background:linear-gradient(270deg, rgb(255, 171, 9) 20%, rgba(255, 171, 9, 0.7) 60%, rgba(255, 171, 9, 0) 95%);;
+    color: white;
+    z-index: 2;
+  }
+  
+  #butaoEmprestimo:hover{
+    transition: ease-in-out,1s;
+    cursor: pointer;
+    background: #e29a41;
+    color: black;
+  }
+  
+  
+  
+  #butaoEmprestimo{
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700; 
+    font-size: 15px;
+    height: 40px;
+    width: 140px;
+    margin: auto;
+    margin-bottom:10px;
+    border: solid 2px black;
+    border-radius: 10px;
+    background:linear-gradient(270deg, rgb(255, 171, 9) 20%, rgba(255, 171, 9, 0.7) 60%, rgba(255, 171, 9, 0) 95%);;
+    color: white;
+    z-index: 2;
+  }
+  
+  #butaoEmprestimo:hover{
+    transition: ease-in-out,1s;
+    cursor: pointer;
+    background: #e29a41;
+    color: black;
+  }
+  
+  
+  
+  

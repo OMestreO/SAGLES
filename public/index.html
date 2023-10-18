@@ -4,52 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="../src/style/style.css" />
+    <link rel="stylesheet" href="../src/style/login.css" />
     <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon" />
 
     <title>SAGLES</title>
   </head>
 
   <body>
-    <div class="desktop">
-      <div class="div">
-        <div class="overlap">
-          <div class="login">
-            <div class="text-wrapper">Login</div>
+    <main>
+      <div class="cards">
+        <div class="cardImagem">
+          <img src="../src/img/logo.png" alt=""style="width: 30vw; height:
+          70vh ">
+        </div>
 
-            <div class="nome-acima-do-input">Nome</div>
-
-            <div class="senha-acima-do-input">Senha</div>
-
-            <form name="formLogin" method="POST" action="../src/php/login/login.php">
-              <input
-                class="input-nome"
-                type="text"
-                placeholder="Nome"
-                name="formNome"
-                maxlength="20"
-              />
-              <input
-                class="input-senha"
-                type="password"
-                placeholder="Senha"
-                name="formSenha"
-                maxlength="20"
-              />
-              <input class="enviar" type="submit" value="Enviar" />
-            </form>
+        <div class="cardLogin">
+          <h1>LOGIN</h1>
+          <form
+            name="formLogin"
+            method="POST"
+            action="../src/php/login/login.php"
+          >
+            <label for="">Username</label>
+            <input
+              class="input-nome"
+              type="text"
+              placeholder="Nome"
+              name="formNome"
+              maxlength="20"
+              required
+            />
+            <label for="">Password</label>
+            <input
+              class="input-senha"
+              type="password"
+              placeholder="Senha"
+              name="formSenha"
+              maxlength="20"
+              required
+            />
+            <input class="enviar" type="submit" value="Enviar" />
+          </form>
+          <div class="cadastre">
+            <h5> Não tem uma conta? <a href="/public/cadastro.html">Cadastre-se</a></h5>
           </div>
         </div>
-
-        <div class="overlap-group">
-          <div class="text-wrapper-2">Login</div>
-
-          <p class="texto-agradecimento">
-            A equipe do SAGLES agradece pela aquisição do nosso sistema, e
-            esperamos que aproveite bastante.
-          </p>
-        </div>
       </div>
-    </div>
+    </main>
   </body>
+  <link rel="stylesheet" href="/">
 </html>

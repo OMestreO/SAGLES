@@ -1,0 +1,267 @@
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  font-family: "Montserrat-Bold", Helvetica;
+  background-color: #132E35;
+}
+
+.cabeca {
+  background: #132E35;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  position: fixed;
+  z-index: 2;
+}
+
+nav {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 2;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav li {
+  margin-top: 5%;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.logo {
+  margin-left: 30px;
+  margin-top: 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+
+h2 {
+  color: #AFB3B7;
+  font-family: "Montserrat-Bold", Helvetica;
+}
+
+p {
+  color: #2D4A53;
+  width: 250px;
+  position: absolute;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+}
+
+.box1,
+.box2,
+.box3,
+.box4 {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FIXME: MEXENDO NA COR DO BACKGROUND  */
+
+.box1{
+  background: linear-gradient(270deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
+}
+
+.box2{
+  background: linear-gradient(90deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
+}
+
+.box3{
+  background: linear-gradient(270deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
+}
+
+.box4{
+  background: linear-gradient(90deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
+}
+
+  /* FIXME: FINALIZADO */
+
+  /* FIXME: MEXENDO NA POSICAO DO TITULO DA BOX EX:EMPRESTIMO  */
+
+.box1 h2,
+.box2 h2,
+.box3 h2,
+.box4 h2{ 
+  position: absolute;
+}
+
+.box1 h2{
+  margin-bottom: 21%;
+  margin-left: 62%;
+}
+
+.box2 h2{
+  margin-bottom: 21%;
+  margin-right: 62%;
+}
+
+.box3 h2{
+  margin-bottom: 21%;
+  margin-left: 62%;
+}
+
+.box4 h2{
+  margin-bottom: 21%;
+  margin-right: 62%;
+}
+
+/* FIXME: FINALIZADO */
+
+
+/* FIXME: MEXENDO NA POSICAO DO TEXTO DA BOX */
+
+.box1 p{
+  width: 400px;
+  margin-top: -18%;
+  margin-right: 60%;
+}
+
+.box2 p{
+  width: 400px;
+  margin-top: -18%;
+  margin-left: 60%;
+}
+
+.box3 p{
+  width: 400px;
+  margin-top: -18%;
+  margin-right: 60%;
+}
+
+.box4 p{
+  width: 400px;
+  margin-top: -18%;
+  margin-left: 60%;
+}
+
+/* FIXME: FINALIZADO */
+
+.imagem1,
+.imagem2,
+.imagem3,
+.imagem4 {
+  align-items: center;
+  border-radius: 20px;
+  background: #69818D;
+  width: 250px;
+  height: 250px;
+}
+
+/* FIXME: MEXENDO NA POSICAO DA IMAGEM DA BOX */
+
+.imagem1 {
+  margin-top: 4%;
+  margin-left: 62%;
+}
+
+.imagem2 {
+  margin-top: 4%;
+  margin-right: 62%;
+}
+
+.imagem3 {
+  margin-top: 4%;
+  margin-left: 62%;
+}
+
+.imagem4 {
+  margin-top: 4%;
+  margin-right:62%;
+}
+
+/* FIXME: FINALIZADO */
+
+img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  align-items: center;
+  margin: auto;
+}
+
+.img1 {
+  width: 200px;
+  height: 200px;
+  border-radius: 30%;
+  align-items: center;
+  margin: auto;
+  margin-top: 9%;
+}
+
+.img3 {
+  width: 200px;
+  height: 200px;
+  border-radius: 30%;
+  align-items: center;
+  margin: auto;
+  margin-top: 9%;
+}
+
+.buttong {
+  position: absolute;
+  width: 300px;
+  background-color: #69818D;
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px solid #AFB3B7;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.buttong:hover {
+  transition: ease-in-out 1s;
+  background-color: #1D3A43;
+  border: 2px solid #69818D;
+}
+
+/* FIXME: MEXENDO NA POSICAO DOS BUTOES DA BOX */
+
+#emprestimo{
+  margin-top: 18%;
+  margin-right: 60%;
+}
+
+#devolver{
+  margin-top: 18%;
+  margin-left: 60%;
+}
+
+#historico{
+  margin-top: 18%;
+  margin-right: 60%;
+}
+
+#adicionar{
+  margin-top: 18%;
+  margin-left: 60%;
+}
+
+/* FIXME: FINALIZADO */

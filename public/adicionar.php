@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../src/style/style.css">
+  <link rel="stylesheet" href="../src/style/adiciona.css">
   <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
   <title>ADICIONAR</title>
 </head>

@@ -1,0 +1,104 @@
+body{
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position:absolute;
+  font-family: "Montserrat-Bold", Helvetica;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(360deg, #132E35 0%, #2D4A53 20%, #69818D 40%, #AFB3B7 50%, #5A636A 90%);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.cards {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 20px;
+  background-color: transparent;
+  width: 60vw;
+  height: 70vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.cardLogin {
+  background:#2D4A53;
+  width: 50%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center; 
+
+}
+
+.cardImagem {
+  width: 50%; 
+  height: 70vh;
+}
+
+img{
+
+ 
+}
+
+h1{
+  color:#AFB3B7
+}
+
+form{
+  width: 300px;
+  color:#AFB3B7 ;
+}
+
+.input-nome,
+.input-senha {
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 30px;
+  outline: none;
+  background: transparent;
+  font-size: 20px;
+  font-family: "Montserrat-Bold", Helvetica;
+
+}
+
+.enviar{ 
+  width: 150px;
+  background-color: #2D4A53; 
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px solid #AFB3B7;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-left: 25%;
+
+}
+
+.enviar:hover{
+  transition: ease-in-out 1s;
+  background-color: #1D3A43;
+  border: 2px solid #69818D;
+}
+
+.cadastre{
+  color: #AFB3B7;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 20px;
+
+}
+
+.cadastre a{
+  color: #AFB3B7;
+}
