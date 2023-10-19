@@ -1,12 +1,3 @@
-body{
-  padding: 0;
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  position:absolute;
-  font-family: "Montserrat-Bold", Helvetica;
-}
-
 main {
   width: 100vw;
   height: 100vh;
@@ -43,11 +34,6 @@ main {
   height: 70vh;
 }
 
-img{
-
- 
-}
-
 h1{
   color:#AFB3B7
 }
@@ -68,7 +54,6 @@ form{
   outline: none;
   background: transparent;
   font-size: 20px;
-  font-family: "Montserrat-Bold", Helvetica;
 
 }
 
@@ -94,11 +79,18 @@ form{
 
 .cadastre{
   color: #AFB3B7;
-  font-family: "Montserrat-Bold", Helvetica;
   font-size: 20px;
 
 }
 
 .cadastre a{
   color: #AFB3B7;
+}
+
+.imagemOlho {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  margin-top: -65px;
+  margin-left: 270px;
 }

@@ -1,15 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 body {
-  background-color: aquamarine;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  font-family: 'Poppins';
+  background-color: #132E35;
 }
 
-.lista {
-  list-style: none; /* Remove os marcadores de lista */
-  padding: 0; /* Remove o espaçamento interno da lista */
-  margin: 0; /* Remove o espaçamento externo da lista */
-  cursor: pointer;
+.cabeca {
+  background: #132E35;
+  width: 100%;
+  height: 78px;
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  transition: transform 1s;
 }
 
-.lista-resultados li {
-  cursor: pointer; /* Transforma o cursor em uma mão ao passar sobre os itens da lista */
-  padding: 5px; /* Adiciona algum espaçamento entre os itens da lista */
+.cabeca img{
+  border-radius: 50%;
+  margin-left: 30px;
 }

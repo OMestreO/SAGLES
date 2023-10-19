@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../src/style/historico.css">
+  <link rel="stylesheet" href="../src/style/main.css">
   <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
   <title>historico</title>
 </head>
@@ -29,7 +30,18 @@
         </tr>
 
         <?php
-        require "../src/php/conexao.php";
+        
+        $hostname = "127.0.0.1:8090";
+        $bancodedados = "sagles";
+        $usuario = "root";
+        $senha = "";
+        
+        $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
+        if ($mysqli->connect_errno) {
+        
+          die("Connection failed: ". $mysqli->connect_error);
+        }
+        
 
         $mostraTudo = mysqli_query($mysqli, 'SELECT cod_aluno, cod_livro, data_emprestimo, data_entrega FROM emprestimo;');
 

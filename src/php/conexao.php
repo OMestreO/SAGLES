@@ -8,5 +8,5 @@ $senha = "";
 $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
 if ($mysqli->connect_errno) {
 
-  die("Connection failed: " . $mysqli->connect_error);
+  die("Connection failed: ". $mysqli->connect_error);
 }
