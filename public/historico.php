@@ -14,71 +14,78 @@
   <header class="cabeca">
 
     <!-- FAZER O JS PRA IR PARA A PAGINA GERAL -->
-    <img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;">
+    <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
 
   </header>
   <main>
     <div class="planinhacontainer">
-      <h1> Teste</h1>
-      <table border="1" id="tabela-dados">
-        <tr>
-          <th class="thAluno">Aluno</th>
-          <th class="thLivro">Livro</th>
-          <th class="thTurma">Turma</th>
-          <th class="thDataDeEmprestimo">Data de empréstimo</th>
-          <th class="thDataDeEntrega">Data de devolução</th>
-        </tr>
+      <div class="adicionarSrollBar">
+        <table border="1" id="tabela-dados" class="<?php echo $corFundo; ?>" >
+          <tr>
+            <th class="thAluno">Aluno</th>
+            <th class="thLivro">Livro</th>
+            <th class="thTurma">Turma</th>
+            <th class="thDataDeEmprestimo">Data de empréstimo</th>
+            <th class="thDataDeEntrega ">Data de devolução</th>
+          </tr>
 
-        <?php
-        
-        $hostname = "127.0.0.1:8090";
-        $bancodedados = "sagles";
-        $usuario = "root";
-        $senha = "";
-        
-        $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
-        if ($mysqli->connect_errno) {
-        
-          die("Connection failed: ". $mysqli->connect_error);
-        }
-        
+          <!-- FIXME: DEIXAR A TABELA BONITA -->
 
-        $mostraTudo = mysqli_query($mysqli, 'SELECT cod_aluno, cod_livro, data_emprestimo, data_entrega FROM emprestimo;');
+          <?php
+            $hostname = "127.0.0.1:8090";
+            $bancodedados = "sagles";
+            $usuario = "root";
+            $senha = "";
 
-        while ($user_data = mysqli_fetch_assoc($mostraTudo)) {
-          $cod_aluno = $user_data['cod_aluno'];
-          $cod_livro = $user_data['cod_livro'];
+            $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
+            if ($mysqli->connect_errno) {
+                die("Connection failed: " . $mysqli->connect_error);
+            }
 
-          // Consulta pata obter a turma do aluno com base no cod_aluno
-          $consultaTurma = mysqli_query($mysqli, "SELECT turma FROM aluno WHERE id = '$cod_aluno'");
-          $rowTurma = mysqli_fetch_assoc($consultaTurma);
-          $turmaAluno = $rowTurma['turma'];
-          
-          // Consulta para obter o nome do aluno com base no cod_aluno
-          $consultaAluno = mysqli_query($mysqli, "SELECT nome FROM aluno WHERE id = '$cod_aluno'");
-          $rowAluno = mysqli_fetch_assoc($consultaAluno);
-          $nomeAluno = $rowAluno['nome'];
+            $mostraTudo = mysqli_query($mysqli, 'SELECT cod_aluno, cod_livro, data_emprestimo, data_entrega FROM emprestimo;');
 
-          // Consulta para obter o nome do livro com base no cod_livro
-          $consultaLivro = mysqli_query($mysqli, "SELECT titulo FROM livro WHERE cod_liv = '$cod_livro'");
-          $rowLivro = mysqli_fetch_assoc($consultaLivro);
-          $nomeLivro = $rowLivro['titulo'];
+            while ($user_data = mysqli_fetch_assoc($mostraTudo)) {
+              $cod_aluno = $user_data['cod_aluno'];
+              $cod_livro = $user_data['cod_livro'];
 
-          echo "<tr>";
-          echo "<td>" . $nomeAluno . "</td>";
-          echo "<td>" . $nomeLivro . "</td>";
-          echo "<td>" . $turmaAluno . "</td>";
-          echo "<td>" . $user_data['data_emprestimo'] . "</td>";
-          echo "<td>" . $user_data['data_entrega'] . "</td>";
-          echo "<tr>";
-        }
-        ?>
-      </table>
-      <tbody>
-      </tbody>
+              // Consulta para obter a turma do aluno com base no cod_aluno
+              $consultaTurma = mysqli_query($mysqli, "SELECT turma FROM aluno WHERE id = '$cod_aluno'");
+              $rowTurma = mysqli_fetch_assoc($consultaTurma);
+              $turmaAluno = $rowTurma['turma'];
+
+              // Consulta para obter o nome do aluno com base no cod_aluno
+              $consultaAluno = mysqli_query($mysqli, "SELECT nome FROM aluno WHERE id = '$cod_aluno'");
+              $rowAluno = mysqli_fetch_assoc($consultaAluno);
+              $nomeAluno = $rowAluno['nome'];
+
+              // Consulta para obter o nome do livro com base no cod_livro
+              $consultaLivro = mysqli_query($mysqli, "SELECT titulo FROM livro WHERE cod_liv = '$cod_livro'");
+              $rowLivro = mysqli_fetch_assoc($consultaLivro);
+              $nomeLivro = $rowLivro['titulo'];
+
+              // Obter a data atual
+              $dataAtual = date("Y-m-d");
+
+              // Verificar se a data de entrega já passou
+              if ($user_data['data_entrega'] < $dataAtual) {
+                  $corFundo = "red"; // Data de entrega passada, cor vermelha
+              } else {
+                  $corFundo = "green"; // Data de entrega futura, cor verde
+              }
+
+              echo '<tr style="background-color: ' . $corFundo . ';">';
+              echo '<td>' . $nomeAluno . '</td>';
+              echo '<td>' . $nomeLivro . '</td>';
+              echo '<td>' . $turmaAluno . '</td>';
+              echo '<td>' . $user_data['data_emprestimo'] . '</td>';
+              echo '<td>' . $user_data['data_entrega'] . '</td>';
+              echo '</tr>';
+            }
+          ?>
+        </table>
+      </div>
     </div>
   </main>
-
 </body>
 
 </html>

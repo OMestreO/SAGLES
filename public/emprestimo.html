@@ -11,12 +11,7 @@
   </head>
   <body>
     <header class="cabeca">
-      <img
-        class="logo"
-        src="../src/img/logo.png"
-        alt=""
-        style="margin-top: -2px"
-      />
+      <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
     </header>
 
     <main id="mainEmprestimo">
@@ -24,8 +19,7 @@
         id="formEmprestimo"
         name="formEmprestimo"
         method="POST"
-        action="../src/php/emprestimo/emprestimos.php"
-      >
+        action="../src/php/emprestimo/emprestimos.php">
         <label id="labelEmprestimo" for="nomeDoAluno">Nome</label>
 
         <input
@@ -34,11 +28,10 @@
           id="inputFormEmprestimoNome"
           type="search"
           required
-          placeholder="Digite um nome"
-        />
+          placeholder="Digite um nome" />
 
-        <div id="resultado" class="lista">
-          <li id="lista-resultados"></li>
+        <div id="resultadoNome" class="listaNome">
+          <li id="lista-resultadosNome"></li>
         </div>
 
         <label id="labelEmprestimo" for="nomeDoLivro">Nome do livro</label>
@@ -49,24 +42,20 @@
           id="inputFormEmprestimoNomeDoLivro"
           placeholder="Digite um livro"
           type="search"
-          required
-        />
+          required />
 
-        <div id="resultadoa" class="listaa">
-          <li id="lista-resultadosa"></li>
+        <div id="resultadoLivro" class="listaLivro">
+          <li id="lista-resultadosLivro"></li>
         </div>
 
-        <label for="DataDeEmprestimo" id="labelEmprestimo"
-          >Data de empréstimo</label
-        >
+        <label for="DataDeEmprestimo" id="labelEmprestimo">Data de empréstimo</label>
 
         <input
           name="DataDeEmprestimo"
           class="inputFormEmprestimo"
           id="inputFormEmprestimoLivro"
           type="date"
-          required
-        />
+          required />
 
         <label for="DataDeEntrega" id="labelEmprestimo">Data de entrega</label>
 
@@ -75,8 +64,7 @@
           id="inputFormEmprestimoLivroEntrega"
           type="date"
           name="DataDeEntrega"
-          required
-        />
+          required />
 
         <label id="labelEmprestimo" for="turmas">Turma</label>
 
@@ -84,8 +72,7 @@
           class="inputFormEmprestimo"
           id="inputFormEmprestimoTurma"
           name="Turmas"
-          id="turmasEscola"
-        >
+          id="turmasEscola">
           <option disabled selected hidden>Selecione a turma</option>
           <option value="3TDSA">3°TDS'A'</option>
           <option value="3TDSB">3°TDS'B'</option>
@@ -105,8 +92,7 @@
           name="ButEnviar"
           id="butaoEmprestimo"
           type="submit"
-          value="ENVIAR"
-        >
+          value="ENVIAR">
           ENVIAR
         </button>
       </form>
@@ -114,9 +100,19 @@
 
     <script>
       $(document).ready(function () {
+        var lastSearch = ""; // Variável para rastrear a última pesquisa
+        var listaResultados = $("#lista-resultadosNome");
+
         $("#inputFormEmprestimoNome").keyup(function () {
           var nome = $(this).val();
-          var listaResultados = $("#lista-resultados");
+
+          // Verifique se a pesquisa mudou
+          if (nome === lastSearch) {
+            return; // Evite fazer a solicitação AJAX novamente para a mesma pesquisa
+          }
+
+          lastSearch = nome; // Atualize a última pesquisa
+
           listaResultados.empty(); // Limpa a lista de resultados antes de adicionar novos
 
           // Verifique se o input está vazio
@@ -131,17 +127,24 @@
             success: function (data) {
               if (data.length > 0) {
                 var nomes = JSON.parse(data); // Parse os resultados como um array JSON
+                var nomesExibidos = {}; // Objeto para rastrear nomes exibidos
 
                 // Adiciona os nomes à lista
                 for (var i = 0; i < nomes.length; i++) {
-                  var nomeItem = $("<li>" + nomes[i].nome + "</li>");
-                  listaResultados.append(nomeItem);
+                  var nomeAtual = nomes[i].nome;
 
-                  // Adiciona um evento de clique ao nome
-                  nomeItem.click(function () {
-                    $("#inputFormEmprestimoNome").val($(this).text()); // Preenche o input com o nome clicado
-                    listaResultados.empty(); // Limpa a lista de resultados após o clique
-                  });
+                  // Verifica se o nome já foi exibido
+                  if (!nomesExibidos[nomeAtual]) {
+                    var nomeItem = $("<li>" + nomeAtual + "</li>");
+                    listaResultados.append(nomeItem);
+                    nomesExibidos[nomeAtual] = true;
+
+                    // Adiciona um evento de clique ao nome
+                    nomeItem.click(function () {
+                      $("#inputFormEmprestimoNome").val($(this).text()); // Preenche o input com o nome clicado
+                      listaResultados.empty(); // Limpa a lista de resultados após o clique
+                    });
+                  }
                 }
               } else {
                 listaResultados.append("<li>Nenhum resultado encontrado.</li>");
@@ -150,13 +153,14 @@
           });
         });
       });
+
     </script>
 
     <script>
       $(document).ready(function () {
         $("#inputFormEmprestimoNomeDoLivro").keyup(function () {
           var titulo = $(this).val();
-          var listaResultados = $("#lista-resultadosa");
+          var listaResultados = $("#lista-resultadosLivro");
           listaResultados.empty(); // Limpa a lista de resultados antes de adicionar novos
 
           // Verifique se o input está vazio
@@ -191,6 +195,5 @@
         });
       });
     </script>
-    
   </body>
 </html>

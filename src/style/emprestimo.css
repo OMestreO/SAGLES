@@ -23,28 +23,23 @@
     border-radius: 10px;
   }
   
-  .lista {
+  .listaNome,
+  .listaLivro {
     list-style: none; 
     padding: 0; 
     margin: 0; 
     cursor: pointer;
     z-index: 2;
+    width: 290px;
+    margin-left: 80px;
+    margin-top: 10px;
+    background: white;
+    border-radius: 20px;
+    text-align: center;
   }
   
-  .lista-resultados li {
-    cursor: pointer; 
-    padding: 5px; 
-    z-index: 2;
-  }
-  .listaa {
-    list-style: none; 
-    padding: 0; 
-    margin: 0; 
-    cursor: pointer;
-    z-index: 2;
-  }
-  
-  .lista-resultadosa li {
+  .lista-resultadosNome li,
+  .lista-resultadosLivro li{
     cursor: pointer; 
     padding: 5px; 
     z-index: 2;

@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 14%;
+  margin-top: 8%;
   border-radius: 30px;
   background:#2D4A53;
   color: #AFB3B7;
@@ -52,9 +52,10 @@
 
 
 table {
-  width: 70%;
-  margin: 20px;
-
+  width: 100%;
+  border: 1px solid black;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 th,
@@ -83,6 +84,7 @@ td {
 
 th {
   background-color: #f2f2f2;
+  position: sticky;
 }
 
 tr:nth-child(even) {
@@ -99,4 +101,34 @@ tr:hover {
   align-items: center;
   margin-left: 6%;
   width: 1200px;
+  border-collapse: separate;
+  border-spacing: 0px;
+  min-width: max-content;
 }
+
+.adicionarScrollBar {
+  max-height: 213px;
+  overflow-y: scroll;
+  margin: 20px;
+  padding-right: 10px;
+  width: 850px;
+  
+}
+
+.adicionarScrollBar::-webkit-scrollbar {
+  width: 7px;
+  background: #1D3A43;
+  
+}
+
+.adicionarScrollBar::-webkit-scrollbar-thumb {
+  width: 7px;
+  background: #5A636A;
+}
+
+
+
+
+
+
+

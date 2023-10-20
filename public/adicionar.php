@@ -12,7 +12,7 @@
 
   <header class="cabeca">
 
-    <img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;" >
+  <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
 
   </header>
 
@@ -29,7 +29,8 @@
 
   <main>
     <div class="planinhacontainer">
-        <table border="1" id="tabela-dados">
+      <div class="adicionarScrollBar">
+        <table border="1" id="tabela-dados" class="testeScroll">
             <tr>
                 <th class="th1">Titulo</th>
                 <th class="thAutor">Autor</th>
@@ -62,9 +63,8 @@
                 }
               ?>
         </table>
-        <tbody>
-        </tbody>
-    </div>
+      </div>
+    </div>  
   </main>
 </body>
 </html>

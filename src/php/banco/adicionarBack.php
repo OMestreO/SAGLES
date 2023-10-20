@@ -55,19 +55,3 @@ if (mysqli_num_rows($resultadoLivro) == 1 && mysqli_num_rows($resultadoAutor) ==
   }
 }
 ?>
-
-
-
-if (mysqli_num_rows($resultadoLivro) == 1 && mysqli_num_rows($resultadoAutor) == 1) {
-    
-    $query = mysqli_query($mysqli, "SELECT quantidade FROM livro WHERE titulo = '$nomeDoLivro' AND nome_autor = '$nomeDoAutor'");
-    $row = mysqli_fetch_assoc($query);
-    $quantidadeLivro = $row['quantidade'];
-
-    $calculo = $quantidadeLivro + $quantidade;
-
-    if ($calculo < 0) {
-        $calculo = $quantidadeLivro;
-    }
-
-    mysqli_query($mysqli, "UPDATE livro SET quantidade = '$calculo' WHERE titulo = '$nomeDoLivro' AND nome_autor = '$nomeDoAutor'");

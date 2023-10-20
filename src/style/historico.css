@@ -1,12 +1,63 @@
+table {
+  width: 80%;
+  border: 1px solid black;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: auto;
+}
 
-.thAluno{
-    width: 450px;
-  }
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  font-size: 18px;
+}
+
+th {
+  background-color: #f2f2f2;
+  position: sticky;
+}
+th:hover {
+  background-color: #ddd;
+}
+
+.thAluno {
+  width: 450px;
+}
+
+.thLivro {
+  width: 450px;
+}
+
+.thDataDeEntrega {
+  width: 110px;
+}
+
+.atrasado {
+  background: red;
+}
+
+.emDia {
+  background: green;
+}
+
+.adicionarScrollBar {
+  max-height: 213px;
+  overflow-y: scroll;
+  margin: 20px;
+  padding-right: 10px;
+  width: 850px;
   
-  .thLivro {
-    width: 450px;
-  }
+}
+
+.adicionarScrollBar::-webkit-scrollbar {
+  width: 7px;
+  background: #1D3A43;
   
-  .thDataDeEntrega {
-    width: 110px;
-  }
+}
+
+.adicionarScrollBar::-webkit-scrollbar-thumb {
+  width: 7px;
+  background: #5A636A;
+}

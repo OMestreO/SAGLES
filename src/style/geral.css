@@ -21,20 +21,20 @@ nav li {
 nav a {
   position: relative;
   text-decoration: none;
-  color: #5A636A;
+  color: #AFB3B7;
   font-weight: bold;
   letter-spacing: 0.5px;
   padding: 0 10px;
 }
 
 nav a:hover{
-  color: #AFB3B7;
+  color: #d3d7dd;
 }
 
 nav a::after {
   content: "";
   position: absolute;
-  background-color:#AFB3B7;
+  background-color:#d3d7dd;
   height: 3px;
   width: 0;
   left: 0;
@@ -264,6 +264,16 @@ img {
 #adicionar{
   margin-top: 18%;
   margin-left: 60%;
+}
+
+.scrollBar::-webkit-scrollbar {
+  width: 7px;
+  background: #1D3A43;
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+  width: 7px;
+  background: #5A636A;
 }
 
 /* FIXME: FINALIZADO */
