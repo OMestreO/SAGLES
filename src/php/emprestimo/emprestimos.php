@@ -10,8 +10,6 @@ if ($mysqli->connect_errno) {
   die("Connection failed: ". $mysqli->connect_error);
 }
 
-$mensagemErro = "";
-
 if (isset($_POST["NomeDoAluno"])) {
     $nomeDoAluno = $_POST["NomeDoAluno"];
 }
@@ -131,7 +129,6 @@ if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) ==
 
     $query = mysqli_query($mysqli, "SELECT disponiveis FROM livro WHERE titulo = '$nomeDoLivro'");
 
-    $mensagemErro = "Erro personalizado: sua mensagem de erro aqui.";
     }
 
 }
