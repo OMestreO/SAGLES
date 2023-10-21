@@ -96,7 +96,7 @@ if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) ==
 
     mysqli_query($mysqli, "UPDATE livro SET disponiveis = '$calculo' WHERE titulo = '$nomeDoLivro'");
 
-    header("Location: http://localhost:8000/public/emprestimo.html");
+    header("Location: http://localhost:8090/public/emprestimo.html");
 
 } else {
 
@@ -125,5 +125,5 @@ if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) ==
 
     $query = mysqli_query($mysqli, "SELECT disponiveis FROM livro WHERE titulo = '$nomeDoLivro'");
 
-    }
+}
 
