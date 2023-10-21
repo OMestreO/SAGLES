@@ -1,3 +1,5 @@
+<?php
+
 $nomeDoAluno = mysqli_real_escape_string($mysqli, $_POST['NomeDoAluno']);
 
 $nomeDoLivro = mysqli_real_escape_string($mysqli, $_POST['NomeDoLivro']);
@@ -73,3 +75,4 @@ else {
   } 
   
 }
+?>

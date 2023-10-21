@@ -1,10 +1,9 @@
-
 $(document).ready(function () {
   var lastSearch = ""; // Variável para rastrear a última pesquisa
   var listaResultados = $("#lista-resultadosNome");
 
   $("#inputFormEmprestimoNome").keyup(function () {
-    
+
     var nome = $(this).val();
 
     // Verifique se a pesquisa mudou
@@ -93,11 +92,20 @@ $(document).ready(function () {
   });
 });
 
+function validarDataEntrega() {
+  const dataEmpr = new Date(document.getElementById("inputFormEmprestimoLivro").value);
+  const dataEntrega = new Date(document.getElementById("inputFormEmprestimoLivroEntrega").value);
 
+  if (dataEntrega < dataEmpr) {
+    alert("A data de entrega não pode ser anterior à data de empréstimo.");
+    return false;
+  }
 
+  return true;
+}
 
-
-
-
-
-
+document.getElementById("butaoEmprestimo").addEventListener("click", function (event) {
+  if (!validarDataEntrega()) {
+    event.preventDefault();
+  }
+});

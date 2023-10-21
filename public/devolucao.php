@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../src/style/historico.css">
+  <link rel="stylesheet" href="../src/style/devolucao.css">
   <link rel="stylesheet" href="../src/style/main.css">
   <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
   <title>Devolução</title>
@@ -69,7 +69,7 @@
               echo '<td>' . $turmaAluno . '</td>';
               echo '<td>' . $user_data['data_emprestimo'] . '</td>';
               echo '<td>' . $user_data['data_entrega'] . '</td>';
-              echo '<td>' . '<button></button>'  . '</td>';
+              echo '<td>' . '<form action="../src/php/devolucao/devolucaoBack.php"><button><img class="imagemDevolver" src="https://cdn-icons-png.flaticon.com/128/12363/12363614.png" ></button></form>'  . '</td>';
               echo '</tr>';
             }
           ?>

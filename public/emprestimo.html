@@ -1,3 +1,1060 @@
+𝔍𝔒ℌ
+joh5398
+Não perturbar
+
+JúlioDoCocoricó — 15/09/2023 15:12
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id),
+    nome VARCHAR(50) NOT NULL,
+    turma VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE livro (
+    cod_liv INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (cod_liv),
+    titulo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE emprestimo (
+    id_emprestimo INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id_emprestimo),
+    cod_aluno INT,
+    cod_livro INT,
+    data_emprestimo DATE,
+    data_entrega DATE,
+    FOREIGN KEY (cod_aluno) REFERENCES aluno(id),
+    FOREIGN KEY (cod_livro) REFERENCES livro(cod_liv)
+);
+$sql = "INSERT INTO emprestimo (cod_aluno, cod_livro, data_emprestimo, data_entrega, turma)
+        VALUES (
+            (SELECT id FROM aluno WHERE nome = '$nomeDoAluno' AND turma = '$turma'),
+            (SELECT cod_liv FROM livro WHERE titulo = '$nomeDoLivro'),
+            '$dataDeEmprestimo',
+            '$dataDeEntrega',
+            '$turma'
+        )";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Empréstimo registrado com sucesso!";
+} else {
+    echo "Erro ao registrar o empréstimo: " . $conn->error;
+}
+<?php
+// Establish a database connection (modify the credentials as needed)
+$servername = "your_server_name";
+$username = "your_username";
+$password = "your_password";
+$dbname = "your_database_name";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve data from the form
+$nomeDoAluno = $_POST['nomeDoAluno'];
+$nomeDoLivro = $_POST['nomeDoLivro'];
+$dataDeEmprestimo = $_POST['DataDeEmprestimo'];
+$dataDeEntrega = $_POST['DataDeEntrega'];
+$turma = $_POST['turmas'];
+
+// Insert data into the emprestimo table
+$sql = "INSERT INTO emprestimo (cod_aluno, cod_livro, data_emprestimo, data_entrega, turma)
+        VALUES (
+            (SELECT id FROM aluno WHERE nome = '$nomeDoAluno' AND turma = '$turma'),
+            (SELECT cod_liv FROM livro WHERE titulo = '$nomeDoLivro'),
+            '$dataDeEmprestimo',
+            '$dataDeEntrega',
+            '$turma'
+        )";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Empréstimo registrado com sucesso!";
+} else {
+    echo "Erro ao registrar o empréstimo: " . $conn->error;
+}
+
+// Close the database connection
+$conn->close();
+?>
+𝔍𝔒ℌ — 15/09/2023 16:38
+Fatal error: Uncaught TypeError: mysqli_query(): Argument #3 ($result_mode) must be of type int, string given in C:\Users\casa\Documents\SAGLES\src\php\emprestimos.php:51 Stack trace: #0 C:\Users\casa\Documents\SAGLES\src\php\emprestimos.php(51): mysqli_query(Object(mysqli), 'SELECT * FROM a...', 'SELECT * FROM l...') #1 {main} thrown in C:\Users\casa\Documents\SAGLES\src\php\emprestimos.php on line 51
+JúlioDoCocoricó — 15/09/2023 16:40
+$sql = "SELECT * FROM aluno WHERE nome = '$nomeDoAluno'";
+$selecionarIdLivro = "SELECT * FROM livro WHERE titulo = '$nomeDoLivro' ";
+
+$resultadoAluno = mysqli_query($mysqli, $sql);
+$resultadoLivro = mysqli_query($mysqli, $selecionarIdLivro);
+
+if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) == 1) {
+    session_start();
+
+    echo "salve";
+    $_SESSION['formNome'] = $nomeDoAluno; // Corrigi a variável aqui
+    header("Location: http://localhost:8090/public/geral.html");
+} else {
+    header("Location: https://www.youtube.com/watch?v=Wa0cHfc8yC8");
+}
+YouTube
+漢語  汉语
+É o menino de papai é - áudio
+Imagem
+𝔍𝔒ℌ — 15/09/2023 17:25
+Fatal error: Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in C:\Users\casa\Documents\SAGLES\src\php\emprestimos.php:68 Stack trace: #0 C:\Users\casa\Documents\SAGLES\src\php\emprestimos.php(68): mysqli_query(Object(mysqli), 'INSERT INTO emp...') #1 {main} thrown in C:\Users\casa\Documents\SAGLES\src\php\emprestimos.php on line 68
+JúlioDoCocoricó — 16/09/2023 12:44
+Imagem
+use SAGLES;
+
+create table login(
+id int auto_increment,
+primary key (id),
+nome varchar (20) not null,
+senha varchar (20) not null
+);
+
+select * from login;
+
+insert into login (nome,senha) values("jorgeAmado",1717);
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id),
+    nome VARCHAR(50) NOT NULL,
+    turma VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE livro (
+    cod_liv INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (cod_liv),
+    titulo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE emprestimo (
+    id_emprestimo INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id_emprestimo),
+    cod_aluno INT,
+    cod_livro INT,
+    data_emprestimo DATE,
+    data_entrega DATE,
+    FOREIGN KEY (cod_aluno) REFERENCES aluno(id),
+    FOREIGN KEY (cod_livro) REFERENCES livro(cod_liv)
+);
+𝔍𝔒ℌ — 16/09/2023 12:53
+https://prod.liveshare.vsengsaas.visualstudio.com/join?28FAC65AEA3F82166A2A7691805204CF8FBA
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+JúlioDoCocoricó — 16/09/2023 13:06
+-- Adicione o Trigger aqui
+DELIMITER //
+CREATE TRIGGER uppercase_aluno_nome
+BEFORE INSERT ON aluno
+FOR EACH ROW
+BEGIN
+    SET NEW.nome = UPPER(NEW.nome);
+END;
+//
+DELIMITER ;
+𝔍𝔒ℌ — 16/09/2023 13:11
+///////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+drop database sagles;
+
+create database sagles;
+
+use SAGLES;
+
+create table login(
+id int auto_increment,
+primary key (id),
+nome varchar (20) not null,
+senha varchar (20) not null
+);
+
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id),
+    nome VARCHAR(50) NOT NULL,
+    turma VARCHAR(10) NOT NULL
+);
+
+DELIMITER //
+CREATE TRIGGER uppercase_aluno_nome
+BEFORE INSERT ON aluno
+FOR EACH ROW
+BEGIN
+    SET NEW.nome = UPPER(NEW.nome);
+END;
+//
+DELIMITER ;
+
+CREATE TABLE livro (
+    cod_liv INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (cod_liv),
+    titulo VARCHAR(50) NOT NULL
+);
+
+DELIMITER //
+CREATE TRIGGER uppercase_livro_titulo
+BEFORE INSERT ON livro
+FOR EACH ROW
+BEGIN
+    SET NEW.titulo = UPPER(NEW.titulo);
+END;
+//
+DELIMITER ;
+
+CREATE TABLE emprestimo (
+    id_emprestimo INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id_emprestimo),
+    cod_aluno INT,
+    cod_livro INT,
+    data_emprestimo DATE,
+    data_entrega DATE,
+    FOREIGN KEY (cod_aluno) REFERENCES aluno(id),
+    FOREIGN KEY (cod_livro) REFERENCES livro(cod_liv)
+);
+insert into login (nome,senha) values("jorgeAmado",1717);
+
+select * from login;
+select * from aluno;
+select * from livro;
+select * from emprestimo;
+
+drop table login;
+drop table aluno;
+drop table livro;
+drop table emprestimo;
+///////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+JúlioDoCocoricó — 16/09/2023 13:16
+UPDATE aluno
+SET nome = REPLACE(REPLACE(REPLACE(REPLACE(nome, 'á', 'a'), 'é', 'e'), 'í', 'i'), 'ó', 'o');
+JúlioDoCocoricó — 16/09/2023 15:48
+Imagem
+𝔍𝔒ℌ — 17/09/2023 12:30
+https://prod.liveshare.vsengsaas.visualstudio.com/join?FE30F17B6B36A58C444D12DCAFF420CBC54C
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+𝔍𝔒ℌ — 17/09/2023 14:55
+Fatal error: Uncaught Error: Object of class mysqli_result could not be converted to string in C:\Users\casa\Documents\SAGLES\src\php\adicionarBack.php:35 Stack trace: #0 {main} thrown in C:\Users\casa\Documents\SAGLES\src\php\adicionarBack.php on line 35
+𝔍𝔒ℌ
+ iniciou uma chamada que durou poucos segundos.
+ — 17/09/2023 15:36
+JúlioDoCocoricó — 17/09/2023 16:46
+https://www.youtube.com/watch?v=B6ZWt_Bw8zA
+YouTube
+Moon Manhwas
+Ele foi humilhado durante toda a vida, mas quando voltou, ficou o m...
+Imagem
+𝔍𝔒ℌ — 20/09/2023 16:09
+drop database sagles;
+
+create database sagles;
+
+use SAGLES;
+
+/LOGIN/ /LOGIN/
+
+create table login(
+id int auto_increment,
+primary key (id),
+nome varchar (20) not null,
+senha varchar (20) not null
+);
+
+/LOGIN/ /LOGIN/
+
+/ALUNO/ /ALUNO/
+
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id),
+    nome VARCHAR(50) NOT NULL,
+    turma VARCHAR(10) NOT NULL
+);
+
+DELIMITER //
+CREATE TRIGGER uppercase_aluno_nome
+BEFORE INSERT ON aluno
+FOR EACH ROW
+BEGIN
+    SET NEW.nome = UPPER(NEW.nome);
+END;
+//
+DELIMITER ;
+
+
+/ALUNO/ /ALUNO/
+
+/LIVRO/ /LIVRO/
+
+CREATE TABLE livro (
+    cod_liv INT AUTO_INCREMENT,
+    PRIMARY KEY (cod_liv),
+    titulo VARCHAR(50) NOT NULL,
+    nome_autor varchar(50) not null,
+    quantidade int(255) not null 
+);
+
+DELIMITER //
+CREATE TRIGGER uppercase_livro_titulo
+BEFORE INSERT ON livro
+FOR EACH ROW
+BEGIN
+    SET NEW.titulo = UPPER(NEW.titulo);
+    SET NEW.nome_autor = upper(NEW.nome_autor);
+END;
+//
+DELIMITER ;
+
+
+/LIVRO/ /LIVRO/
+
+/EMPRESTIMO/ /EMPRESTIMO/
+
+CREATE TABLE emprestimo (
+    id_emprestimo INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id_emprestimo),
+    cod_aluno INT,
+    cod_livro INT,
+    data_emprestimo DATE,
+    data_entrega DATE,
+    FOREIGN KEY (cod_aluno) REFERENCES aluno(id),
+    FOREIGN KEY (cod_livro) REFERENCES livro(cod_liv)
+);
+
+/EMPRESTIMO/ /EMPRESTIMO/
+
+insert into login (nome,senha) values("jorgeAmado",1717);
+
+select * from login;
+select * from aluno;
+select * from livro;
+select * from emprestimo;
+
+
+insert into livro (titulo,nome_autor,quantidade) values ('Alice no pais das maravilhas','Eduardo Almeida Campos',28);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+drop table login;
+drop table aluno;
+drop table livro;
+drop table emprestimo;
+𝔍𝔒ℌ — 23/09/2023 15:34
+https://prod.liveshare.vsengsaas.visualstudio.com/join?82C75F414C87983229B8B7A38C851A2ACEC7
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+𝔍𝔒ℌ — 28/09/2023 21:49
+https://www.facebook.com/profile.php?id=100017165505758
+Paulo Ricardo
+Paulo Ricardo is on Facebook. Join Facebook to connect with Paulo Ricardo and others you may know. Facebook gives people the power to share and makes the world more open and connected.
+JúlioDoCocoricó — 29/09/2023 12:51
+<?php
+// Conecte-se ao banco de dados (substitua com suas credenciais)
+$dbhost = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "bd_teste";
+Expandir
+get.php
+1 KB
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pesquisa no Banco de Dados</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+Expandir
+index.html
+3 KB
+
+body {
+    background-color: aquamarine;
+}
+
+.lista {
+Expandir
+main.css
+1 KB
+𝔍𝔒ℌ — 29/09/2023 13:07
+https://prod.liveshare.vsengsaas.visualstudio.com/join?ADE8C70F13B342DD34449EE89B70CDC7C7D6
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+JúlioDoCocoricó — 29/09/2023 13:07
+v
+𝔍𝔒ℌ — 30/09/2023 20:38
+https://prod.liveshare.vsengsaas.visualstudio.com/join?E884CC26B1340DE4129D8CA160E1A16AFC4B
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+𝔍𝔒ℌ — 02/10/2023 18:54
+entre na call entre
+𝔍𝔒ℌ — 04/10/2023 13:22
+https://trello.com/invite/saglesfinal/ATTId187b5076b1291017f47ffb42d0034bf8B8CA9BF
+Trello
+Organize anything, together. Trello is a collaboration tool that organizes your projects into boards. In one glance, know what's being worked on, who's working on what, and where something is in a process.
+𝔍𝔒ℌ — 07/10/2023 19:05
+https://prod.liveshare.vsengsaas.visualstudio.com/join?B23487170F07045E2AB2FA2625A58A778FC3
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+𝔍𝔒ℌ — 08/10/2023 14:41
+https://prod.liveshare.vsengsaas.visualstudio.com/join?B581E438809ADE27766CEDF22D6B136A7673
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+𝔍𝔒ℌ — 08/10/2023 15:35
+drop database sagles;
+
+create database sagles;
+
+use SAGLES;
+
+/LOGIN/ /LOGIN/
+
+create table login(
+id int auto_increment,
+primary key (id),
+nome varchar (20) not null,
+senha varchar (20) not null
+);
+
+/LOGIN/ /LOGIN/
+
+/ALUNO/ /ALUNO/
+
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id),
+    nome VARCHAR(50) NOT NULL,
+    turma VARCHAR(10) NOT NULL
+);
+
+DELIMITER //
+CREATE TRIGGER uppercase_aluno_nome
+BEFORE INSERT ON aluno
+FOR EACH ROW
+BEGIN
+    SET NEW.nome = UPPER(NEW.nome);
+END;
+//
+DELIMITER ;
+
+
+/ALUNO/ /ALUNO/
+
+/LIVRO/ /LIVRO/
+
+CREATE TABLE livro (
+    cod_liv INT AUTO_INCREMENT,
+    PRIMARY KEY (cod_liv),
+    titulo VARCHAR(50) NOT NULL,
+    nome_autor varchar(50) not null,
+    quantidade int(255) not null,
+    disponiveis int(255) not null
+);
+
+DELIMITER //
+CREATE TRIGGER uppercase_livro_titulo
+BEFORE INSERT ON livro
+FOR EACH ROW
+BEGIN
+    SET NEW.titulo = UPPER(NEW.titulo);
+    SET NEW.nome_autor = upper(NEW.nome_autor);
+END;
+//
+DELIMITER ;
+
+
+/LIVRO/ /LIVRO/
+
+/EMPRESTIMO/ /EMPRESTIMO/
+
+CREATE TABLE emprestimo (
+    id_emprestimo INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id_emprestimo),
+    cod_aluno INT,
+    cod_livro INT,
+    data_emprestimo DATE,
+    data_entrega DATE,
+    FOREIGN KEY (cod_aluno) REFERENCES aluno(id),
+    FOREIGN KEY (cod_livro) REFERENCES livro(cod_liv)
+);
+
+/EMPRESTIMO/ /EMPRESTIMO/
+
+insert into login (nome,senha) values("jorgeAmado",1717);
+
+select * from login;
+select * from aluno;
+select * from livro;
+select * from emprestimo;
+
+insert into aluno (nome,turma) values ('ANDRESSA MORAIS','3TDSA');
+
+insert into livro (titulo,nome_autor,quantidade,disponiveis) values ('Alice no pais das maravilhas','Eduardo Almeida Campos',28,28);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+drop table login;
+drop table aluno;
+drop table livro;
+drop table emprestimo;
+𝔍𝔒ℌ — 13/10/2023 09:14
+https://prod.liveshare.vsengsaas.visualstudio.com/join?65CD26059A43072855E2ED791B715F5583AE
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+JúlioDoCocoricó — 13/10/2023 09:22
+Imagem
+JúlioDoCocoricó — 13/10/2023 09:40
+Tipo de arquivo em anexo: unknown
+Logo.jfif
+15.81 KB
+𝔍𝔒ℌ — 13/10/2023 15:01
+olhe o zipzop
+JúlioDoCocoricó — 18/10/2023 09:30
+"php.executablePath": "caminho/para/php",
+𝔍𝔒ℌ — 18/10/2023 09:33
+{
+    "terminal.integrated.env.windows": {},
+    "workbench.colorTheme": "Dracula",
+    "tabnine.experimentalAutoImports": true,
+    "workbench.iconTheme": "vscode-great-icons",
+    "files.autoSave": "afterDelay",
+    "editor.codeActionsOnSave": {
+    "php.executablePath": "C:/php/php.exe",
+
+    }
+
+
+}
+JúlioDoCocoricó — 18/10/2023 09:34
+{
+    "terminal.integrated.env.windows": {},
+    "workbench.colorTheme": "Dracula",
+    "tabnine.experimentalAutoImports": true,
+    "workbench.iconTheme": "vscode-great-icons",
+    "files.autoSave": "afterDelay",
+    "php.executablePath": "C:/php/php.exe"
+}
+JúlioDoCocoricó — 18/10/2023 09:54
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="../src/style/login.css" />
+    <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon" />
+
+    <title>SAGLES</title>
+  </head>
+
+  <body>
+    <main>
+      <div class="cards">
+        <div class="cardImagem">
+          <img src="../src/img/logo.png" alt="" / style="width: 30vw; height:
+          70vh ">
+        </div>
+
+        <div class="cardLogin">
+          <h1>LOGIN</h1>
+          <form
+            name="formLogin"
+            method="POST"
+            action="../src/php/login/login.php"
+          >
+            <label for="">Username</label>
+            <input
+              class="input-nome"
+              type="text"
+              placeholder="Nome"
+              name="formNome"
+              maxlength="20"
+              required
+            />
+            <label for="">Password</label>
+            <input
+              class="input-senha"
+              type="password"
+              placeholder="Senha"
+              name="formSenha"
+              maxlength="20"
+              required
+            />
+            <input class="enviar" type="submit" value="Enviar" />
+          </form>
+          <div class="cadastre">
+            <h5> Não tem uma conta? <a href="/public/cadastro.html">Cadastre-se</a></h5>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <link rel="stylesheet" href="/">
+</html>
+𝔍𝔒ℌ — 18/10/2023 09:55
+///////////////////////////////////////////////////////////////
+JúlioDoCocoricó — 18/10/2023 09:55
+body{
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position:absolute;
+  font-family: "Montserrat-Bold", Helvetica;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(360deg, #132E35 0%, #2D4A53 20%, #69818D 40%, #AFB3B7 50%, #5A636A 90%);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.cards {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 20px;
+  background-color: transparent;
+  width: 60vw;
+  height: 70vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.cardLogin {
+  background:#2D4A53;
+  width: 50%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center; 
+
+}
+
+.cardImagem {
+  width: 50%; 
+  height: 70vh;
+}
+
+img{
+
+ 
+}
+
+h1{
+  color:#AFB3B7
+}
+
+form{
+  width: 300px;
+  color:#AFB3B7 ;
+}
+
+.input-nome,
+.input-senha {
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 30px;
+  outline: none;
+  background: transparent;
+  font-size: 20px;
+  font-family: "Montserrat-Bold", Helvetica;
+
+}
+
+.enviar{ 
+  width: 150px;
+  background-color: #2D4A53; 
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px solid #AFB3B7;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-left: 25%;
+
+}
+
+.enviar:hover{
+  transition: ease-in-out 1s;
+  background-color: #1D3A43;
+  border: 2px solid #69818D;
+}
+
+.cadastre{
+  color: #AFB3B7;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 20px;
+
+}
+
+.cadastre a{
+  color: #AFB3B7;
+}
+JúlioDoCocoricó — 18/10/2023 10:11
+drop database sagles;
+
+create database sagles;
+
+use SAGLES;
+
+/LOGIN/ /LOGIN/
+
+create table login(
+id int auto_increment,
+primary key (id),
+nome varchar (20) not null,
+senha varchar (20) not null
+);
+
+/LOGIN/ /LOGIN/
+
+/ALUNO/ /ALUNO/
+
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id),
+    nome VARCHAR(50) NOT NULL,
+    turma VARCHAR(10) NOT NULL
+);
+
+DELIMITER //
+CREATE TRIGGER uppercase_aluno_nome
+BEFORE INSERT ON aluno
+FOR EACH ROW
+BEGIN
+    SET NEW.nome = UPPER(NEW.nome);
+END;
+//
+DELIMITER ;
+
+
+/ALUNO/ /ALUNO/
+
+/LIVRO/ /LIVRO/
+
+CREATE TABLE livro (
+    cod_liv INT AUTO_INCREMENT,
+    PRIMARY KEY (cod_liv),
+    titulo VARCHAR(50) NOT NULL,
+    nome_autor varchar(50) not null,
+    quantidade int(255) not null,
+    disponiveis int(255) not null
+);
+
+DELIMITER //
+CREATE TRIGGER uppercase_livro_titulo
+BEFORE INSERT ON livro
+FOR EACH ROW
+BEGIN
+    SET NEW.titulo = UPPER(NEW.titulo);
+    SET NEW.nome_autor = upper(NEW.nome_autor);
+END;
+//
+DELIMITER ;
+
+
+/LIVRO/ /LIVRO/
+
+/EMPRESTIMO/ /EMPRESTIMO/
+
+CREATE TABLE emprestimo (
+    id_emprestimo INT AUTO_INCREMENT UNIQUE,
+    PRIMARY KEY (id_emprestimo),
+    cod_aluno INT,
+    cod_livro INT,
+    data_emprestimo DATE,
+    data_entrega DATE,
+    FOREIGN KEY (cod_aluno) REFERENCES aluno(id),
+    FOREIGN KEY (cod_livro) REFERENCES livro(cod_liv)
+);
+
+/EMPRESTIMO/ /EMPRESTIMO/
+
+insert into login (nome,senha) values("jorgeAmado",1717);
+
+select * from login;
+select * from aluno;
+select * from livro;
+select * from emprestimo;
+
+insert into aluno (nome,turma) values ('ANDRESSA MORAIS','3TDSA');
+
+insert into livro (titulo,nome_autor,quantidade,disponiveis) values ('Alice no pais das maravilhas','Eduardo Almeida Campos',28,28);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+drop table login;
+drop table aluno;
+drop table livro;
+drop table emprestimo;
+𝔍𝔒ℌ — 18/10/2023 21:42
+https://prod.liveshare.vsengsaas.visualstudio.com/join?F16953EBA6DC2DE949BB6F04C1223A4ADE18
+https://prod.liveshare.vsengsaas.visualstudio.com/join?F16953EBA6DC2DE949BB6F04C1223A4ADE18
+𝔍𝔒ℌ — 19/10/2023 18:30
+https://prod.liveshare.vsengsaas.visualstudio.com/join?940EF9CB0397A30B8809B8B18937A5A9FA38
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+𝔍𝔒ℌ — Hoje às 14:53
+https://prod.liveshare.vsengsaas.visualstudio.com/join?7EC1E2B5CDD856974C7EB36D2B1B9CA21ABE
+Visual Studio Code for the Web
+Build with Visual Studio Code, anywhere, anytime, entirely in your browser.
+JúlioDoCocoricó — Hoje às 16:52
+<?php
+$hostname = "127.0.0.1:8090";
+$bancodedados = "sagles";
+$usuario = "root";
+$senha = "";
+
+$mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
+if ($mysqli->connect_errno) {
+
+  die("Connection failed: ". $mysqli->connect_error);
+}
+
+if (isset($_POST["NomeDoAluno"])) {
+    $nomeDoAluno = $_POST["NomeDoAluno"];
+}
+
+if (isset($_POST["NomeDoLivro"])) {
+    $nomeDoLivro = $_POST["NomeDoLivro"];
+}
+
+if (isset($_POST["DataDeEmprestimo"])) {
+    $dataDeEmprestimo = $_POST["DataDeEmprestimo"];
+}
+
+if (isset($_POST["DataDeEntrega"])) {
+    $dataDeEntrega = $_POST["DataDeEntrega"];
+}
+
+if (isset($_POST["Turmas"])) {
+    $turma = $_POST["Turmas"];
+}
+
+$resultadoAluno = mysqli_query($mysqli, "SELECT * FROM aluno WHERE nome = '$nomeDoAluno'");
+$resultadoLivro = mysqli_query($mysqli, "SELECT * FROM livro WHERE titulo = '$nomeDoLivro' ");
+$resultadoTurma = mysqli_query($mysqli, "SELECT * FROM aluno WHERE turma = '$turma' AND nome = '$nomeDoAluno'");
+
+if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) == 1 && mysqli_num_rows($resultadoTurma) == 1) {
+
+    $idAlunoQuery = mysqli_query($mysqli, "SELECT id FROM aluno WHERE nome = '$nomeDoAluno'");
+    $codLivroQuery = mysqli_query($mysqli, "SELECT cod_liv FROM livro WHERE titulo = '$nomeDoLivro'");
+
+    $idAlunoRow = mysqli_fetch_assoc($idAlunoQuery);
+    $codLivroRow = mysqli_fetch_assoc($codLivroQuery);
+
+    $idAluno = $idAlunoRow['id'];
+    $codLivro = $codLivroRow['cod_liv'];
+
+    mysqli_query($mysqli, "INSERT INTO emprestimo (cod_aluno, cod_livro, data_emprestimo, data_entrega) 
+    VALUES ('$idAluno','$codLivro','$dataDeEmprestimo','$dataDeEntrega')");
+
+    $query = mysqli_query($mysqli, "SELECT disponiveis FROM livro WHERE titulo = '$nomeDoLivro'");
+    $row = mysqli_fetch_assoc($query);
+    $LivrosDisponiveis = $row['disponiveis'];
+    $quantidade = 1;
+
+    $calculo = $LivrosDisponiveis - $quantidade;
+
+    if ($calculo < 0) {
+        $calculo = $LivrosDisponiveis;
+    }
+
+    mysqli_query($mysqli, "UPDATE livro SET disponiveis = '$calculo' WHERE titulo = '$nomeDoLivro'");
+
+    header("Location: http://localhost:8090/public/emprestimo.html");
+
+} elseif (mysqli_num_rows($resultadoLivro) == 1) {
+
+    $existeAlunoQuery = mysqli_query($mysqli, "SELECT id FROM aluno WHERE nome = '$nomeDoAluno' AND turma ='$turma'");
+
+    if (mysqli_num_rows($existeAlunoQuery) == 0) {
+        mysqli_query($mysqli, "INSERT INTO aluno (nome, turma) VALUES ('$nomeDoAluno', '$turma')");
+    }
+
+    $idAlunoQuery = mysqli_query($mysqli, "SELECT id FROM aluno WHERE nome = '$nomeDoAluno' AND turma ='$turma'");
+    $codLivroQuery = mysqli_query($mysqli, "SELECT cod_liv FROM livro WHERE titulo = '$nomeDoLivro'");
+
+    $idAlunoRow = mysqli_fetch_assoc($idAlunoQuery);
+    $codLivroRow = mysqli_fetch_assoc($codLivroQuery);
+
+    $idAluno = $idAlunoRow['id'];
+    $codLivro = $codLivroRow['cod_liv'];
+
+    mysqli_query($mysqli, "INSERT INTO emprestimo (cod_aluno, cod_livro, data_emprestimo, data_entrega) 
+    VALUES ('$idAluno','$codLivro','$dataDeEmprestimo','$dataDeEntrega')");
+
+    $query = mysqli_query($mysqli, "SELECT disponiveis FROM livro WHERE titulo = '$nomeDoLivro'");
+    $row = mysqli_fetch_assoc($query);
+    $LivrosDisponiveis = $row['disponiveis'];
+    $quantidade = 1;
+
+    $calculo = $LivrosDisponiveis - $quantidade;
+
+    if ($calculo < 0) {
+        $calculo = $LivrosDisponiveis;
+    }
+
+    mysqli_query($mysqli, "UPDATE livro SET disponiveis = '$calculo' WHERE titulo = '$nomeDoLivro'");
+
+    header("Location: http://localhost:8090/public/emprestimo.html");
+
+... (30 linhas)
+Recolher
+message.txt
+5 KB
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -7,7 +1064,114 @@
     <link rel="stylesheet" href="../src/style/main.css">
     <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>EmpréstimoA</title>
+    <title>Empréstimo</title>
+  </head>
+  <body>
+    <header class="cabeca">
+      <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
+    </header>
+
+    <main id="mainEmprestimo">
+      <form
+        id="formEmprestimo"
+        name="formEmprestimo"
+        method="POST"
+        action="../src/php/emprestimo/emprestimos.php">
+        <label id="labelEmprestimo" for="nomeDoAluno">Nome</label>
+
+        <input
+          name="NomeDoAluno"
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoNome"
+          type="search"
+          required
+          placeholder="Digite um nome" />
+
+        <div id="resultadoNome" class="listaNome">
+          <li id="lista-resultadosNome"></li>
+        </div>
+
+        <label id="labelEmprestimo" for="nomeDoLivro">Nome do livro</label>
+
+        <input
+          name="NomeDoLivro"
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoNomeDoLivro"
+          placeholder="Digite um livro"
+          type="search"
+          required />
+
+        <div id="resultadoLivro" class="listaLivro">
+          <li id="lista-resultadosLivro"></li>
+        </div>
+
+        <label for="DataDeEmprestimo" id="labelEmprestimo">Data de empréstimo</label>
+
+        <input
+          name="DataDeEmprestimo"
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoLivro"
+          type="date"
+          required />
+
+        <label for="DataDeEntrega" id="labelEmprestimo">Data de entrega</label>
+
+        <input
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoLivroEntrega"
+          type="date"
+          name="DataDeEntrega"
+          required />
+
+        <label id="labelEmprestimo" for="turmas">Turma</label>
+
+        <select
+          class="inputFormEmprestimo"
+          id="inputFormEmprestimoTurma"
+          name="Turmas"
+          id="turmasEscola">
+          <option disabled selected hidden>Selecione a turma</option>
+          <option value="3TDSA">3°TDS'A'</option>
+          <option value="3TDSB">3°TDS'B'</option>
+          <option value="3MKTA">3°MKT'A'</option>
+          <option value="3MKTB">3°MKT'B'</option>
+          <option value="2TDSA">2°TDS'A'</option>
+          <option value="2TDSB">2°TDS'B'</option>
+          <option value="2MKTA">2°MKT'A'</option>
+          <option value="2MKTB">2°MKT'B'</option>
+          <option value="1TDSA">1°TDS'A'</option>
+          <option value="1TDSB">1°TDS'B'</option>
+          <option value="1MKTA">1°MKT'A'</option>
+          <option value="1MKTB">1°MKT'B'</option>
+        </select>
+
+        <button
+          name="ButEnviar"
+          id="butaoEmprestimo"
+          type="submit"
+          value="ENVIAR">
+          ENVIAR
+        </button>
+      </form>
+    </main>
+    <script src="../src/script/emprestimo.js"></script>
+... (2 linhas)
+Recolher
+message.txt
+4 KB
+﻿
+JúlioDoCocoricó
+juliohsaa
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/style/emprestimo.css" />
+    <link rel="stylesheet" href="../src/style/main.css">
+    <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Empréstimo</title>
   </head>
   <body>
     <header class="cabeca">
