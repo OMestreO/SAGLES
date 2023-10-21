@@ -109,3 +109,39 @@ document.getElementById("butaoEmprestimo").addEventListener("click", function (e
     event.preventDefault();
   }
 });
+
+function validarDataEntrega() {
+  const dataEmpr = new Date(document.getElementById("inputFormEmprestimoLivro").value);
+  const dataEntrega = new Date(document.getElementById("inputFormEmprestimoLivroEntrega").value);
+
+  if (dataEntrega < dataEmpr) {
+    alert("A data de entrega não pode ser anterior à data de empréstimo.");
+    return false;
+  }
+
+  return true;
+}
+
+document.getElementById("butaoEmprestimo").addEventListener("click", function (event) {
+  if (!validarDataEntrega()) {
+    event.preventDefault();
+  }
+});
+
+function validarDataEntrega() {
+  const dataEmpr = new Date(document.getElementById("inputFormEmprestimoLivro").value);
+  const dataEntrega = new Date(document.getElementById("inputFormEmprestimoLivroEntrega").value);
+
+  if (dataEntrega < dataEmpr) {
+    alert("A data de entrega não pode ser anterior à data de empréstimo.");
+    return false;
+  }
+
+  return true;
+}
+
+document.getElementById("butaoEmprestimo").addEventListener("click", function (event) {
+  if (!validarDataEntrega()) {
+    event.preventDefault();
+  }
+});
