@@ -30,10 +30,6 @@ if (isset($_POST["Turmas"])) {
     $turma = $_POST["Turmas"];
 }
 
-if (strtotime($dataDeEntrega) < strtotime($dataDeEmprestimo)) {
-    $mensagemErro = "A data de entrega não pode ser menor que a data de empréstimo.";
-} else {
-
 $resultadoAluno = mysqli_query($mysqli, "SELECT * FROM aluno WHERE nome = '$nomeDoAluno'");
 $resultadoLivro = mysqli_query($mysqli, "SELECT * FROM livro WHERE titulo = '$nomeDoLivro' ");
 $resultadoTurma = mysqli_query($mysqli, "SELECT * FROM aluno WHERE turma = '$turma' AND nome = '$nomeDoAluno'");
@@ -131,4 +127,3 @@ if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) ==
 
     }
 
-}
