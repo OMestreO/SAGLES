@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../src/style/historico.css">
   <link rel="stylesheet" href="../src/style/main.css">
   <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
-  <title>Histórico</title>
+  <title>Devolução</title>
 </head>
 
 <body>
@@ -19,13 +19,14 @@
   </header>
   <main>
     <div class="planinhacontainer">
-        <table border="1" id="tabela-dados" class="<?php echo $corFundo; ?>" >
+        <table border="1" id="tabela-dados">
           <tr>
             <th class="thAluno">Aluno</th>
             <th class="thLivro">Livro</th>
             <th class="thTurma">Turma</th>
             <th class="thDataDeEmprestimo">Data de empréstimo</th>
             <th class="thDataDeEntrega ">Data de devolução</th>
+            <th class="thDevolve">Entregar livro</th>
           </tr>
 
           <!-- FIXME: DEIXAR A TABELA BONITA -->
@@ -62,22 +63,13 @@
               $rowLivro = mysqli_fetch_assoc($consultaLivro);
               $nomeLivro = $rowLivro['titulo'];
 
-              // Obter a data atual
-              $dataAtual = date("Y-m-d");
-
-              // Verificar se a data de entrega já passou
-              if ($user_data['data_entrega'] < $dataAtual) {
-                  $corFundo = "red"; // Data de entrega passada, cor vermelha
-              } else {
-                  $corFundo = "green"; // Data de entrega futura, cor verde
-              }
-
-              echo '<tr style="background-color: ' . $corFundo . ';">';
+              echo '<tr>';
               echo '<td>' . $nomeAluno . '</td>';
               echo '<td>' . $nomeLivro . '</td>';
               echo '<td>' . $turmaAluno . '</td>';
               echo '<td>' . $user_data['data_emprestimo'] . '</td>';
               echo '<td>' . $user_data['data_entrega'] . '</td>';
+              echo '<td>' . '<button></button>'  . '</td>';
               echo '</tr>';
             }
           ?>

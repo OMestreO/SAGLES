@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="../src/style/adiciona.css">
   <link rel="stylesheet" href="../src/style/main.css">
   <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
-  <title>ADICIONAR</title>
+  <title>Adicionar</title>
 </head>
 <body id="bodyAdicionar">
 

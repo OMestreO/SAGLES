@@ -4,6 +4,7 @@ table {
   overflow: hidden;
   border-radius: 20px;
   margin: auto;
+  margin-top: 90px;
 }
 
 th,
@@ -40,24 +41,4 @@ th:hover {
 
 .emDia {
   background: green;
-}
-
-.adicionarScrollBar {
-  max-height: 213px;
-  overflow-y: scroll;
-  margin: 20px;
-  padding-right: 10px;
-  width: 850px;
-  
-}
-
-.adicionarScrollBar::-webkit-scrollbar {
-  width: 7px;
-  background: #1D3A43;
-  
-}
-
-.adicionarScrollBar::-webkit-scrollbar-thumb {
-  width: 7px;
-  background: #5A636A;
 }

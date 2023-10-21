@@ -10,6 +10,8 @@ if ($mysqli->connect_errno) {
   die("Connection failed: ". $mysqli->connect_error);
 }
 
+$mensagemErro = "";
+
 if (isset($_POST["NomeDoAluno"])) {
     $nomeDoAluno = $_POST["NomeDoAluno"];
 }
@@ -29,6 +31,10 @@ if (isset($_POST["DataDeEntrega"])) {
 if (isset($_POST["Turmas"])) {
     $turma = $_POST["Turmas"];
 }
+
+if (strtotime($dataDeEntrega) < strtotime($dataDeEmprestimo)) {
+    $mensagemErro = "A data de entrega não pode ser menor que a data de empréstimo.";
+} else {
 
 $resultadoAluno = mysqli_query($mysqli, "SELECT * FROM aluno WHERE nome = '$nomeDoAluno'");
 $resultadoLivro = mysqli_query($mysqli, "SELECT * FROM livro WHERE titulo = '$nomeDoLivro' ");
@@ -124,4 +130,8 @@ if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) ==
     VALUES ('$idAluno','$codLivro','$dataDeEmprestimo','$dataDeEntrega')");
 
     $query = mysqli_query($mysqli, "SELECT disponiveis FROM livro WHERE titulo = '$nomeDoLivro'");
+
+    $mensagemErro = "Erro personalizado: sua mensagem de erro aqui.";
+    }
+
 }
