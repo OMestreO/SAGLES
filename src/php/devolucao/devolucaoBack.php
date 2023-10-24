@@ -1,78 +1,30 @@
 <?php
+if (isset($_POST['devolva'])) {
+    $id_emprestimo = $_POST['id_emprestimo'];
 
-$nomeDoAluno = mysqli_real_escape_string($mysqli, $_POST['NomeDoAluno']);
+    // Conecte-se ao banco de dados
+    $hostname = "127.0.0.1:8090";
+    $bancodedados = "sagles";
+    $usuario = "root";
+    $senha = "";
 
-$nomeDoLivro = mysqli_real_escape_string($mysqli, $_POST['NomeDoLivro']);
+    $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
+    if ($mysqli->connect_errno) {
+        die("Connection failed: " . $mysqli->connect_error);
+    }
 
-$turma = mysqli_real_escape_string($mysqli, $_POST['Turmas']);
+    // Prepare e execute a consulta para excluir o registro da tabela emprestimo
+    $sql = "DELETE FROM emprestimo WHERE id_emprestimo = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $id_emprestimo); // "i" indica que é um inteiro
+    if ($stmt->execute()) {
+        echo "Registro de empréstimo excluído com sucesso.";
+    } else {
+        echo "Erro ao excluir o registro de empréstimo: " . $mysqli->error;
+    }
 
-$sql = "SELECT * FROM aluno WHERE nome = '$nomeDoAluno'";
-$selecionarIdLivro = "SELECT * FROM livro WHERE titulo = '$nomeDoLivro' ";
-$selecionarTurma = "SELECT * FROM aluno WHERE turma = '$turma'";
-
-$resultadoAluno = mysqli_query($mysqli, $sql);
-$resultadoLivro = mysqli_query($mysqli, $selecionarIdLivro);
-$resultadoTurma = mysqli_query($mysqli, $selecionarTurma);
-
-
-if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) == 1 && mysqli_num_rows($resultadoTurma) == 1) {
-
-  $emprestando = "INSERT INTO emprestimo (cod_aluno, cod_livro, data_emprestimo, data_entrega)
-  VALUES ((SELECT id FROM aluno WHERE nome = '$nomeDoAluno'),(SELECT cod_liv FROM livro WHERE titulo = '$nomeDoLivro'),'$dataDeEmprestimo','$dataDeEntrega')";
-  
-  $chamandoMysql = (mysqli_query($mysqli, $emprestando));
-  
-  $chamandoMysql;
-  
-  header("Location: http://localhost:8090/public/emprestimo.php");
-
-} elseif (mysqli_num_rows($resultadoLivro) == 1){
-
-  $cadastrando = "INSERT INTO aluno (nome, turma) VALUES ('$nomeDoAluno', '$turma') ";
-
-  mysqli_query($mysqli, $cadastrando );
-
-  $emprestando = "INSERT INTO emprestimo (cod_aluno, cod_livro, data_emprestimo, data_entrega)
-  VALUES ((SELECT id FROM aluno WHERE nome = '$nomeDoAluno'),(SELECT cod_liv FROM livro WHERE titulo = '$nomeDoLivro'),'$dataDeEmprestimo','$dataDeEntrega')";
-
-  mysqli_query($mysqli, $emprestando);
-  
-  $query = mysqli_query($mysqli, "SELECT disponiveis FROM livro WHERE titulo = '$nomeDoLivro'");
-  $row = mysqli_fetch_assoc($query);
-  $LivrosDisponiveis = $row['disponiveis'];
-  $quantidade = 1;
-
-  // LEMBRAR DE BOTAR MENSAGEM QUANDO TODOS OS LIVROS JÁ ESTIVEREM EMPRESTADOS
-
-  $calculo = $LivrosDisponiveis - $quantidade;
-
-  header("Location: http://localhost:8090/public/emprestimo.html");
-
-  if ($calculo < 0) {
-      $calculo = $LivrosDisponiveis;
-  }
-
-  mysqli_query($mysqli, "UPDATE livro SET disponiveis = '$calculo' WHERE titulo = '$nomeDoLivro'");
-
-
-}
-else {
-
-  $cadastrando = "INSERT INTO aluno (nome, turma) VALUES ('$nomeDoAluno', '$turma') ";
-
-  $cadastroLivro = "INSERT INTO livro (titulo) VALUES ('$nomeDoLivro')";
-
-  $emprestandoCadastrando = "INSERT INTO emprestimo (cod_aluno, cod_livro, data_emprestimo, data_entrega)
-  VALUES ((SELECT id FROM aluno WHERE nome = '$nomeDoAluno'),(SELECT cod_liv FROM livro WHERE titulo = '$nomeDoLivro'),'$dataDeEmprestimo','$dataDeEntrega')";
-
-  if (mysqli_query($mysqli, $cadastrando) && mysqli_query($mysqli, $cadastroLivro) && mysqli_query($mysqli, $emprestandoCadastrando)) {
-      echo "Registro inserido com sucesso!";
-    
-      header("Location: http://localhost:8090/public/emprestimo.html");
-
-  }     else {
-          echo "Erro ao inserir o registro: " . mysqli_error($mysqli);
-  } 
-  
+    // Fecha a conexão com o banco de dados
+    $stmt->close();
+    $mysqli->close();
 }
 ?>

@@ -13,12 +13,13 @@
 <body>
   <header class="cabeca">
 
-    <!-- FAZER O JS PRA IR PARA A PAGINA GERAL -->
     <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
 
   </header>
   <main>
     <div class="planinhacontainer">
+
+    
         <table border="1" id="tabela-dados">
           <tr>
             <th class="thAluno">Aluno</th>
@@ -42,13 +43,20 @@
                 die("Connection failed: " . $mysqli->connect_error);
             }
 
-            $mostraTudo = mysqli_query($mysqli, 'SELECT cod_aluno, cod_livro, data_emprestimo, data_entrega FROM emprestimo;');
+            $b = 0;
+
+            $mostraTudo = mysqli_query($mysqli, 'SELECT id_emprestimo ,cod_aluno, cod_livro, data_emprestimo, data_entrega FROM emprestimo;');
+
+            $b = $b + 1;
 
             while ($user_data = mysqli_fetch_assoc($mostraTudo)) {
+
+
               $cod_aluno = $user_data['cod_aluno'];
               $cod_livro = $user_data['cod_livro'];
 
               // Consulta para obter a turma do aluno com base no cod_aluno
+
               $consultaTurma = mysqli_query($mysqli, "SELECT turma FROM aluno WHERE id = '$cod_aluno'");
               $rowTurma = mysqli_fetch_assoc($consultaTurma);
               $turmaAluno = $rowTurma['turma'];
@@ -63,19 +71,28 @@
               $rowLivro = mysqli_fetch_assoc($consultaLivro);
               $nomeLivro = $rowLivro['titulo'];
 
+              $consultaID = mysqli_query($mysqli, "SELECT id_emprestimo FROM emprestimo WHERE id_emprestimo = '$b'");
+
+
               echo '<tr>';
               echo '<td>' . $nomeAluno . '</td>';
               echo '<td>' . $nomeLivro . '</td>';
               echo '<td>' . $turmaAluno . '</td>';
               echo '<td>' . $user_data['data_emprestimo'] . '</td>';
               echo '<td>' . $user_data['data_entrega'] . '</td>';
-              echo '<td>' . '<form action="../src/php/devolucao/devolucaoBack.php"><button><img class="imagemDevolver" src="https://cdn-icons-png.flaticon.com/128/12363/12363614.png" ></button></form>'  . '</td>';
+              echo '<td>';
+              echo '<form action="../src/php/devolucao/devolucaoBack.php" method="post">';
+              echo '<input type="hidden" name="id_emprestimo" value="' . $user_data['id_emprestimo']. '">';
+              echo '<button name="devolva" type="submit"><img class="imagemDevolver" src="https://cdn-icons-png.flaticon.com/128/12363/12363614.png"></button>';
+              echo '</form>';
+              echo '</td>';
               echo '</tr>';
             }
           ?>
         </table>
     </div>
   </main>
+
 </body>
 
 </html>
