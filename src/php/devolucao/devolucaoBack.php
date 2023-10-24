@@ -13,18 +13,20 @@ if (isset($_POST['devolva'])) {
         die("Connection failed: " . $mysqli->connect_error);
     }
 
-    // Prepare e execute a consulta para excluir o registro da tabela emprestimo
-    $sql = "DELETE FROM emprestimo WHERE id_emprestimo = ?";
+    // Obtenha a data atual no formato "Y-m-d"
+    $data_devolucao = date("Y-m-d");
+
+    // Prepare e execute a consulta para atualizar a data de devolução na tabela emprestimo
+    $sql = "UPDATE emprestimo SET data_devolucao = ? WHERE id_emprestimo = ?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $id_emprestimo); // "i" indica que é um inteiro
+    $stmt->bind_param("si", $data_devolucao, $id_emprestimo); // "s" indica string e "i" indica inteiro
     if ($stmt->execute()) {
-        header("Location: http://localhost:8090/public/devolucao.php");
+        header("Location: http://localhost:8090/public/historico.php"); // Redirecione para a página de histórico
     } else {
-        echo "Erro ao excluir o registro de empréstimo: " . $mysqli->error;
+        echo "Erro ao atualizar a data de devolução: " . $mysqli->error;
     }
 
     // Fecha a conexão com o banco de dados
     $stmt->close();
     $mysqli->close();
 }
-?>

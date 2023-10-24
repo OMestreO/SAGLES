@@ -74,6 +74,14 @@
     background: #132E35;
     color: #AFB3B7;
   }
+
+  #mensagemErro {
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+  display: none; 
+    
+}
   
   
   

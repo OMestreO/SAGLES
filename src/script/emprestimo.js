@@ -109,3 +109,4 @@ document.getElementById("butaoEmprestimo").addEventListener("click", function (e
     event.preventDefault();
   }
 });
+
