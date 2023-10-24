@@ -18,7 +18,7 @@ if (isset($_POST['devolva'])) {
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $id_emprestimo); // "i" indica que é um inteiro
     if ($stmt->execute()) {
-        echo "Registro de empréstimo excluído com sucesso.";
+        header("Location: http://localhost:8090/public/devolucao.php");
     } else {
         echo "Erro ao excluir o registro de empréstimo: " . $mysqli->error;
     }

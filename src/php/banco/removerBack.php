@@ -23,25 +23,20 @@ if (isset($_POST["nomeDoLivro"]) && isset($_POST["nomeDoAutor"]) && isset($_POST
     $quantidadeAtual = $row['quantidade'];
     $quantidadeDisponivel = $row['disponiveis'];
 
-    $novaQuantidade = $quantidadeAtual + $quantidade;
-    $novaQuantidadeDisponivel = $quantidadeDisponivel + $quantidade;
+    $novaQuantidade = $quantidadeAtual - $quantidade;
+    $novaQuantidadeDisponivel = $quantidadeDisponivel - $quantidade;
 
-    header("Location: http://localhost:8090/public/adicionar.php");
-
-    if ($novaQuantidade < 0) {
-      $novaQuantidade = $quantidadeAtual;
+    if ($novaQuantidadeDisponivel < 0) {
+      // Se a quantidade disponível for menor do que zero, defina-a como zero para evitar números negativos
+      $novaQuantidadeDisponivel = 0;
     }
 
+    // Atualiza a quantidade e a quantidade disponível
     mysqli_query($mysqli, "UPDATE livro SET quantidade = '$novaQuantidade', disponiveis = '$novaQuantidadeDisponivel' WHERE titulo = '$nomeDoLivro' AND nome_autor = '$nomeDoAutor'");
+    header("Location: http://localhost:8090/public/adicionar.php");
   } else {
-    // O livro não existe, então insira como um novo registro
-    $inserindoLivro = "INSERT INTO livro (titulo, nome_autor, quantidade, disponiveis) VALUES ('$nomeDoLivro', '$nomeDoAutor', $quantidade, $quantidade)";
-
-    if (mysqli_query($mysqli, $inserindoLivro)) {
-      // Sucesso ao inserir
-      header("Location: http://localhost:8090/public/adicionar.php");
-    } else {
-      echo "Falha no cadastro: " . $mysqli->error;
-    }
+    // O livro não existe
+    echo "Livro não encontrado.";
   }
 }
+?>

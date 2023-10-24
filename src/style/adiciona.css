@@ -15,6 +15,7 @@
   border-radius: 30px;
   background:#2D4A53;
   color: #AFB3B7;
+  justify-content: space-between;
 }
 
 #nomeDoLivroAdicionar,
@@ -27,6 +28,26 @@
   font-weight: 700;
   font-size: 20px;
   text-align: center;
+}
+
+#butaoRemover {
+  font-weight: 700;
+  font-size: 15px;
+  height: 40px;
+  width: 140px;
+  margin: auto;
+  margin-top: 10px;
+  border: solid 2px black;
+  border-radius: 10px;
+  background:#2D4A53 ;
+  color: #AFB3B7;
+}
+
+#butaoRemover:hover {
+  transition: ease-in-out, 1s;
+  cursor: pointer;
+  background: #132E35;
+  color: #AFB3B7;
 }
 
 
@@ -125,6 +146,14 @@ tr:hover {
   width: 7px;
   background: #5A636A;
 }
+
+.avisoQuantidade {
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+  display: none; /* Inicialmente oculto */
+}
+
 
 
 
