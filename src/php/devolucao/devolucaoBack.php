@@ -2,7 +2,7 @@
 if (isset($_POST['devolva'])) {
     $id_emprestimo = $_POST['id_emprestimo'];
 
-    // Conecte-se ao banco de dados
+    
     $hostname = "127.0.0.1:8090";
     $bancodedados = "sagles";
     $usuario = "root";
@@ -13,20 +13,31 @@ if (isset($_POST['devolva'])) {
         die("Connection failed: " . $mysqli->connect_error);
     }
 
-    // Obtenha a data atual no formato "Y-m-d"
-    $data_devolucao = date("Y-m-d");
+    
+    $stmtCheckDevolucao = $mysqli->prepare("SELECT devolvido FROM emprestimo WHERE id_emprestimo = ?");
+    $stmtCheckDevolucao->bind_param("i", $id_emprestimo);
+    $stmtCheckDevolucao->execute();
+    $stmtCheckDevolucao->bind_result($devolvido);
+    $stmtCheckDevolucao->fetch();
+    $stmtCheckDevolucao->close();
 
-    // Prepare e execute a consulta para atualizar a data de devolução na tabela emprestimo
-    $sql = "UPDATE emprestimo SET data_devolucao = ? WHERE id_emprestimo = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("si", $data_devolucao, $id_emprestimo); // "s" indica string e "i" indica inteiro
-    if ($stmt->execute()) {
-        header("Location: http://localhost:8090/public/historico.php"); // Redirecione para a página de histórico
+    if ($devolvido == 0) {
+       
+        $data_devolucao = date("Y-m-d");
+        $sql = "UPDATE emprestimo SET data_devolucao = ?, devolvido = 1 WHERE id_emprestimo = ?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("si", $data_devolucao, $id_emprestimo);
+        if ($stmt->execute()) {
+            header("Location: http://localhost:8090/public/historico.php"); 
+        } else {
+            echo "Erro ao atualizar a data de devolução: " . $mysqli->error;
+            exit;
+        }
+        $stmt->close();
     } else {
-        echo "Erro ao atualizar a data de devolução: " . $mysqli->error;
+        header("Location: http://localhost:8090/public/historico.php");
     }
 
-    // Fecha a conexão com o banco de dados
-    $stmt->close();
+    
     $mysqli->close();
 }

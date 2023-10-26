@@ -34,6 +34,11 @@ $resultadoAluno = mysqli_query($mysqli, "SELECT * FROM aluno WHERE nome = '$nome
 $resultadoLivro = mysqli_query($mysqli, "SELECT * FROM livro WHERE titulo = '$nomeDoLivro' ");
 $resultadoTurma = mysqli_query($mysqli, "SELECT * FROM aluno WHERE turma = '$turma' AND nome = '$nomeDoAluno'");
 
+if(mysqli_num_rows($resultadoLivro) ==0) {
+    
+    exit();
+}
+
 if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) == 1 && mysqli_num_rows($resultadoTurma) == 1) {
 
     $idAlunoQuery = mysqli_query($mysqli, "SELECT id FROM aluno WHERE nome = '$nomeDoAluno'");
