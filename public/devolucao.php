@@ -77,6 +77,7 @@
           if ($user_data['devolvido'] == 0) {
             echo '<form action="../src/php/devolucao/devolucaoBack.php" method="post">';
             echo '<input type="hidden" name="id_emprestimo" value="' . $user_data['id_emprestimo'] . '">';
+            echo '<input type="hidden" name="cod_livro" value="' . $user_data['cod_livro'] . '">';
             echo '<button name="devolva" type="submit"><img class="imagemDevolver" src="https://cdn-icons-png.flaticon.com/128/12363/12363614.png"></button>';
             echo '</form>';
           } else {
