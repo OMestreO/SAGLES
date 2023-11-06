@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-
 body {
   padding: 0;
   margin: 0;
@@ -9,7 +8,6 @@ body {
   font-family: 'Poppins';
   background-color: #132E35;
 }
-
 .cabeca {
   background: #132E35;
   width: 100%;
@@ -19,7 +17,6 @@ body {
   z-index: 2;
   transition: transform 1s;
 }
-
 .cabeca button img{
   border-radius: 50%;
   margin-left: 30px;
@@ -27,18 +24,15 @@ body {
   height: 78px;
   transition: ease-in-out 0.3s;
 }
-
 .cabeca button img:hover{
   border: 2px solid white;
 }
-
 .cabeca button{
   background: transparent;
   border: none;
   width: 1px;
   height: 1px;
 }
-
 .cabecaGeral img{
   border-radius: 50%;
   margin-left: 36px;

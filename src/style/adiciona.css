@@ -2,7 +2,6 @@
   width: auto;
   height: auto;
 }
-
 #formAdicionar {
   padding: 10px;
   margin-left: 6%;
@@ -17,7 +16,6 @@
   color: #AFB3B7;
   justify-content: space-between;
 }
-
 #nomeDoLivroAdicionar,
 #nomeDoAutorAdicionar,
 #quantidadeDoLivro {
@@ -29,7 +27,6 @@
   font-size: 20px;
   text-align: center;
 }
-
 #butaoRemover {
   font-weight: 700;
   font-size: 15px;
@@ -42,15 +39,12 @@
   background:#2D4A53 ;
   color: #AFB3B7;
 }
-
 #butaoRemover:hover {
   transition: ease-in-out, 1s;
   cursor: pointer;
   background: #132E35;
   color: #AFB3B7;
 }
-
-
 #butaoAdicionar {
   font-weight: 700;
   font-size: 15px;
@@ -63,22 +57,18 @@
   background:#2D4A53 ;
   color: #AFB3B7;
 }
-
 #butaoAdicionar:hover {
   transition: ease-in-out, 1s;
   cursor: pointer;
   background: #132E35;
   color: #AFB3B7;
 }
-
-
 table {
   width: 100%;
   border: 1px solid black;
   overflow: hidden;
   border-radius: 20px;
 }
-
 th,
 td {
   border: 1px solid #ccc;
@@ -86,36 +76,28 @@ td {
   text-align: left;
   font-size: 18px;
 }
-
 .th1 {
   width: 200px;
 }
-
 .thAutor {
   width: 200px;
 }
-
 .thQuantidade {
   width: 1%;
 }
-
 .thDisponiveis {
   width: 1%;
 }
-
 th {
   background-color: #f2f2f2;
   position: sticky;
 }
-
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
 tr:hover {
   background-color: #ddd;
 }
-
 .planinhacontainer {
   display: flex;
   flex-direction: column;
@@ -126,7 +108,6 @@ tr:hover {
   border-spacing: 0px;
   min-width: max-content;
 }
-
 .adicionarScrollBar {
   max-height: 213px;
   overflow-y: scroll;
@@ -135,18 +116,15 @@ tr:hover {
   width: 850px;
   
 }
-
 .adicionarScrollBar::-webkit-scrollbar {
   width: 7px;
   background: #1D3A43;
   
 }
-
 .adicionarScrollBar::-webkit-scrollbar-thumb {
   width: 7px;
   background: #5A636A;
 }
-
 .avisoQuantidade {
   color: red;
   font-weight: bold;

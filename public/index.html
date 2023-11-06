@@ -1,63 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="../src/style/login.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="globals.css">
+    <link rel="stylesheet" href="../src/style/login.css">
     <link rel="stylesheet" href="../src/style/main.css">
-    <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon" />
-
+    <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
     <title>SAGLES</title>
-  </head>
-
-  <body>
+</head>
+<body>
     <main>
-      <div class="cards">
-        <div class="cardImagem">
-          <img src="../src/img/logo.png" alt=""style="width: 30vw; height:
-          70vh ">
+        <div class="cards">
+            <div class="cardImagem">
+                <img src="../src/img/logo.png" alt="Logo SAGLES" style="width: 30vw; height: 70vh">
+            </div>
+
+            <div class="cardLogin">
+                <h1>LOGIN</h1>
+                <form name="formLogin" method="POST" action="../src/php/login/login.php">
+                    <label for="formNome">Username</label>
+                    <input class="input-nome" type="text" placeholder="Nome" name="formNome" maxlength="20" required>
+                    <label for="formSenha">Password</label>
+                    <input class="input-senha" type="password" placeholder="Senha" name="formSenha" maxlength="20" required id="senhaInput">
+                    <img class="imagemOlho" src="https://cdn-icons-png.flaticon.com/512/158/158746.png" alt="Ícone Olho" onclick="MostrarSenha()">
+                    <input class="enviar" type="submit" value="Enviar">
+                </form>
+
+                <div class="cadastre">
+                    <h5>Não tem uma conta? <a href="/public/cadastro.html">Cadastre-se</a></h5>
+                </div>
+            </div>
         </div>
-
-        <div class="cardLogin">
-          <h1>LOGIN</h1>
-          <form
-            name="formLogin"
-            method="POST"
-            action="../src/php/login/login.php"
-          >
-            <label for="">Username</label>
-            <input
-              class="input-nome"
-              type="text"
-              placeholder="Nome"
-              name="formNome"
-              maxlength="20"
-              required
-            />
-            <label for="">Password</label>
-            <input
-              class="input-senha"
-              type="password"
-              placeholder="Senha"
-              name="formSenha"
-              maxlength="20"
-              required
-              id="senhaInput"
-            />
-            <img class="imagemOlho" src="https://cdn-icons-png.flaticon.com/512/158/158746.png" alt="Ícone Olho" onclick="MostrarSenha()">
-            <input class="enviar" type="submit" value="Enviar" />
-          </form>
-
-          
-
-
-          <div class="cadastre">
-            <h5> Não tem uma conta? <a href="/public/cadastro.html">Cadastre-se</a></h5>
-          </div>
-        </div>
-      </div>
     </main>
-  </body>
-  <script src="/src/script/login.js"></script>
+    <script src="/src/script/login.js"></script>
+</body>
 </html>

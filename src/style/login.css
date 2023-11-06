@@ -1,12 +1,14 @@
+/* Estilos para o elemento 'main' */
 main {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(360deg, #132E35 0%, #2D4A53 20%, #69818D 40%, #AFB3B7 50%, #5A636A 90%);
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
+/* Estilos para o elemento '.cards' */
 .cards {
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.267);
@@ -18,31 +20,35 @@ main {
   overflow: hidden;
 }
 
+/* Estilos para o elemento '.cardLogin' */
 .cardLogin {
-  background:#2D4A53;
+  background: #2D4A53;
   width: 50%;
   height: 70vh;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
-  justify-content: center; 
-
+  justify-content: center;
 }
 
+/* Estilos para o elemento '.cardImagem' */
 .cardImagem {
-  width: 50%; 
+  width: 50%;
   height: 70vh;
 }
 
-h1{
-  color:#AFB3B7
+/* Estilos para o elemento 'h1' */
+h1 {
+  color: #AFB3B7;
 }
 
-form{
+/* Estilos para o elemento 'form' */
+form {
   width: 300px;
-  color:#AFB3B7 ;
+  color: #AFB3B7;
 }
 
+/* Estilos para os elementos '.input-nome' e '.input-senha' */
 .input-nome,
 .input-senha {
   width: 100%;
@@ -54,12 +60,12 @@ form{
   outline: none;
   background: transparent;
   font-size: 20px;
-
 }
 
-.enviar{ 
+/* Estilos para o elemento '.enviar' */
+.enviar {
   width: 150px;
-  background-color: #2D4A53; 
+  background-color: #2D4A53;
   color: #fff;
   padding: 10px 20px;
   border: 2px solid #AFB3B7;
@@ -68,25 +74,22 @@ form{
   font-size: 16px;
   margin-top: 20px;
   margin-left: 25%;
-
 }
 
-.enviar:hover{
+.enviar:hover {
   transition: ease-in-out 1s;
   background-color: #1D3A43;
   border: 2px solid #69818D;
 }
 
-.cadastre{
+/* Estilos para o elemento '.cadastre' e links dentro dele */
+.cadastre,
+.cadastre a {
   color: #AFB3B7;
   font-size: 20px;
-
 }
 
-.cadastre a{
-  color: #AFB3B7;
-}
-
+/* Estilos para o elemento '.imagemOlho' */
 .imagemOlho {
   width: 30px;
   height: 30px;

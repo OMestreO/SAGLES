@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +8,11 @@
   <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
   <title>Adicionar</title>
 </head>
-
 <body id="bodyAdicionar">
-
   <header class="cabeca">
-
     <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
-
   </header>
-
   <main id="mainAdicionar">
-
     <form method="POST" id="formAdicionar">
       <input name="nomeDoLivro" type="text" class="inputFormAdicionar" id="nomeDoLivroAdicionar" placeholder="Nome do livro" required>
       <input name="nomeDoAutor" type="text" class="inputFormAdicionar" id="nomeDoAutorAdicionar" placeholder="Nome do autor" required>
@@ -28,9 +21,7 @@
       <button name="ButEnviar" id="butaoAdicionar" type="submit" value="ENVIAR" formaction="../src/php/banco/adicionarBack.php">ADICIONAR</button>
       <button name="ButEnviar" id="butaoRemover" type="submit" value="ENVIAR" formaction="../src/php/banco/removerBack.php">REMOVER</button>
     </form>
-
   </main>
-
   <main>
     <div class="planinhacontainer">
       <div class="adicionarScrollBar">
@@ -40,10 +31,8 @@
             <th class="thAutor">Autor</th>
             <th class="thDisponiveis">Disponiveis</th>
             <th class="thQuantidade">Quantidade</th>
-
           </tr>
           <?php
-
           $hostname = "127.0.0.1:8090";
           $bancodedados = "sagles";
           $usuario = "root";

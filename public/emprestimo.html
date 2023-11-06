@@ -13,61 +13,34 @@
     <header class="cabeca">
       <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
     </header>
-
     <main id="mainEmprestimo">
       <form
         id="formEmprestimo"
         name="formEmprestimo"
         method="POST"
         action="../src/php/emprestimo/emprestimos.php">
-        <label id="labelEmprestimo" for="nomeDoAluno">Nome</label>
 
-        <input
-          name="NomeDoAluno"
-          class="inputFormEmprestimo"
-          id="inputFormEmprestimoNome"
-          type="search"
-          required
-          placeholder="Digite um nome" />
+        <label id="labelEmprestimo" for="nomeDoAluno">Nome</label>
+        <input name="NomeDoAluno"class="inputFormEmprestimo"id="inputFormEmprestimoNome"type="search"placeholder="Digite um nome"required />
 
         <div id="resultadoNome" class="listaNome">
           <li id="lista-resultadosNome"></li>
         </div>
-
+        
         <label id="labelEmprestimo" for="nomeDoLivro">Nome do livro</label>
-
-        <input
-          name="NomeDoLivro"
-          class="inputFormEmprestimo"
-          id="inputFormEmprestimoNomeDoLivro"
-          placeholder="Digite um livro"
-          type="search"
-          required />
+        <input name="NomeDoLivro"class="inputFormEmprestimo"id="inputFormEmprestimoNomeDoLivro"placeholder="Digite um livro"type="search"required />
 
         <div id="resultadoLivro" class="listaLivro">
           <li id="lista-resultadosLivro"></li>
         </div>
 
         <label for="DataDeEmprestimo" id="labelEmprestimo">Data de empréstimo</label>
-
-        <input
-          name="DataDeEmprestimo"
-          class="inputFormEmprestimo"
-          id="inputFormEmprestimoLivro"
-          type="date"
-          required />
+        <input name="DataDeEmprestimo"class="inputFormEmprestimo"id="inputFormEmprestimoLivro"type="date"required />
 
         <label for="DataDeEntrega" id="labelEmprestimo">Data de entrega</label>
-
-        <input
-          class="inputFormEmprestimo"
-          id="inputFormEmprestimoLivroEntrega"
-          type="date"
-          name="DataDeEntrega"
-          required />
-
+        <input class="inputFormEmprestimo" id="inputFormEmprestimoLivroEntrega"type="date"name="DataDeEntrega"required />
+        
         <label id="labelEmprestimo" for="turmas">Turma</label>
-
         <select
           class="inputFormEmprestimo"
           id="inputFormEmprestimoTurma"
@@ -87,7 +60,6 @@
           <option value="1MKTA">1°MKT'A'</option>
           <option value="1MKTB">1°MKT'B'</option>
         </select>
-
         <button
           name="ButEnviar"
           id="butaoEmprestimo"
@@ -98,22 +70,19 @@
       </form>
     </main>
     <script src="../src/script/emprestimo.js"></script>
-    <!-- <script>
+    <script>
       document.getElementById("butaoEmprestimo").addEventListener("click", function (event) {
           event.preventDefault(); 
-
           var nomeDoLivro = document.getElementById("inputFormEmprestimoNomeDoLivro").value;
-
           if (bookExists(nomeDoLivro)) {
               document.getElementById("formEmprestimo").submit();
           } else {
               alert("O nome do livro que vai ser emprestado não foi encontrado! Verifique e tente novamente.");
           }
       });
-
       function bookExists(bookName) {
           return false; 
-      } -->
+      }
   </script>
   </body>
 </html>

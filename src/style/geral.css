@@ -6,18 +6,15 @@ nav {
   padding: 0 30px;
   z-index: 2;
 }
-
 nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
 }
-
 nav li {
   margin-top: 5%;
   margin-right: 20px;
 }
-
 nav a {
   position: relative;
   text-decoration: none;
@@ -26,11 +23,9 @@ nav a {
   letter-spacing: 0.5px;
   padding: 0 10px;
 }
-
 nav a:hover{
   color: #d3d7dd;
 }
-
 nav a::after {
   content: "";
   position: absolute;
@@ -41,28 +36,23 @@ nav a::after {
   bottom: -10px;
   transition: 0.3s;
 }
-
 nav a:hover::after{
   width: 100%;
 }
-
 .logo {
   margin-left: 30px;
   margin-top: 10px;
   width: 80px;
   height: 80px;
 }
-
 .container {
   text-align: center;
   width: 100%;
   height: 100vh;
 }
-
 h2 {
   color: #AFB3B7;
 }
-
 p {
   color: #2D4A53;
   width: 250px;
@@ -70,7 +60,6 @@ p {
   font-weight: 700;
   text-align: justify;
 }
-
 .box1,
 .box2,
 .box3,
@@ -83,87 +72,60 @@ p {
   justify-content: center;
   align-items: center;
 }
-
-/* FIXME: MEXENDO NA COR DO BACKGROUND  */
-
 .box1{
   background: linear-gradient(270deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
 }
-
 .box2{
   background: linear-gradient(90deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
 }
-
 .box3{
   background: linear-gradient(270deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
 }
-
 .box4{
   background: linear-gradient(90deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
 }
-
-  /* FIXME: FINALIZADO */
-
-  /* FIXME: MEXENDO NA POSICAO DO TITULO DA BOX EX:EMPRESTIMO  */
-
 .box1 h2,
 .box2 h2,
 .box3 h2,
 .box4 h2{ 
   position: absolute;
 }
-
 .box1 h2{
   margin-bottom: 21%;
   margin-left: 62%;
 }
-
 .box2 h2{
   margin-bottom: 21%;
   margin-right: 62%;
 }
-
 .box3 h2{
   margin-bottom: 21%;
   margin-left: 62%;
 }
-
 .box4 h2{
   margin-bottom: 21%;
   margin-right: 62%;
 }
-
-/* FIXME: FINALIZADO */
-
-
-/* FIXME: MEXENDO NA POSICAO DO TEXTO DA BOX */
-
 .box1 p{
   width: 400px;
   margin-top: -5%;
   margin-right: 60%;
 }
-
 .box2 p{
   width: 400px;
   margin-top: -5%;
   margin-left: 60%;
 }
-
 .box3 p{
   width: 400px;
   margin-top: -5%;
   margin-right: 60%;
 }
-
 .box4 p{
   width: 400px;
   margin-top: -5%;
   margin-left: 60%;
 }
-
-/* FIXME: FINALIZADO */
-
 .imagem1,
 .imagem2,
 .imagem3,
@@ -174,31 +136,22 @@ p {
   width: 250px;
   height: 250px;
 }
-
-/* FIXME: MEXENDO NA POSICAO DA IMAGEM DA BOX */
-
 .imagem1 {
   margin-top: 4%;
   margin-left: 62%;
 }
-
 .imagem2 {
   margin-top: 4%;
   margin-right: 62%;
 }
-
 .imagem3 {
   margin-top: 4%;
   margin-left: 62%;
 }
-
 .imagem4 {
   margin-top: 4%;
   margin-right:62%;
 }
-
-/* FIXME: FINALIZADO */
-
 img {
   width: 250px;
   height: 250px;
@@ -206,7 +159,6 @@ img {
   align-items: center;
   margin: auto;
 }
-
 .img1 {
   width: 200px;
   height: 200px;
@@ -215,7 +167,6 @@ img {
   margin: auto;
   margin-top: 9%;
 }
-
 .img3 {
   width: 200px;
   height: 200px;
@@ -224,7 +175,6 @@ img {
   margin: auto;
   margin-top: 9%;
 }
-
 .buttong {
   position: absolute;
   width: 300px;
@@ -237,43 +187,32 @@ img {
   font-size: 16px;
   margin-top: 20px;
 }
-
 .buttong:hover {
   transition: ease-in-out 1s;
   background-color: #1D3A43;
   border: 2px solid #69818D;
 }
-
-/* FIXME: MEXENDO NA POSICAO DOS BUTOES DA BOX */
-
 #emprestimo{
   margin-top: 18%;
   margin-right: 60%;
 }
-
 #devolver{
   margin-top: 18%;
   margin-left: 60%;
 }
-
 #historico{
   margin-top: 18%;
   margin-right: 60%;
 }
-
 #adicionar{
   margin-top: 18%;
   margin-left: 60%;
 }
-
 .scrollBar::-webkit-scrollbar {
   width: 7px;
   background: #1D3A43;
 }
-
 .scrollBar::-webkit-scrollbar-thumb {
   width: 7px;
   background: #5A636A;
 }
-
-/* FIXME: FINALIZADO */

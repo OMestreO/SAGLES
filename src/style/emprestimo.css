@@ -2,7 +2,6 @@
 #mainEmprestimo{
     display: flex;
   }
-  
   #formEmprestimo{
     border-radius: 30px;
     margin: auto;
@@ -14,7 +13,6 @@
     flex-direction: column;
     border: solid 1px black;
   }
-  
   .inputFormEmprestimo{
     margin: auto;
     margin-top: 10px;
@@ -22,7 +20,6 @@
     height: 30px;
     border-radius: 10px;
   }
-  
   .listaNome,
   .listaLivro {
     list-style: none; 
@@ -37,7 +34,6 @@
     border-radius: 20px;
     text-align: center;
   }
-  
   .lista-resultadosNome li,
   .lista-resultadosLivro li{
     cursor: pointer; 
