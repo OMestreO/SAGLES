@@ -41,25 +41,15 @@
         <input class="inputFormEmprestimo" id="inputFormEmprestimoLivroEntrega"type="date"name="DataDeEntrega"required />
         
         <label id="labelEmprestimo" for="turmas">Turma</label>
-        <select
-          class="inputFormEmprestimo"
-          id="inputFormEmprestimoTurma"
-          name="Turmas"
-          id="turmasEscola">
-          <option disabled selected hidden>Selecione a turma</option>
-          <option value="3TDSA">3°TDS'A'</option>
-          <option value="3TDSB">3°TDS'B'</option>
-          <option value="3MKTA">3°MKT'A'</option>
-          <option value="3MKTB">3°MKT'B'</option>
-          <option value="2TDSA">2°TDS'A'</option>
-          <option value="2TDSB">2°TDS'B'</option>
-          <option value="2MKTA">2°MKT'A'</option>
-          <option value="2MKTB">2°MKT'B'</option>
-          <option value="1TDSA">1°TDS'A'</option>
-          <option value="1TDSB">1°TDS'B'</option>
-          <option value="1MKTA">1°MKT'A'</option>
-          <option value="1MKTB">1°MKT'B'</option>
-        </select>
+
+<select class="inputFormEmprestimo" id="inputFormEmprestimoTurma" name="Turmas">
+    <option disabled selected hidden>Selecione a turma</option>
+
+    <!-- PHP para obter as opções das turmas -->
+
+    <?php include_once "src/php/emprestimo/pegarTurma.php"; ?>
+</select>
+
         <button
           name="ButEnviar"
           id="butaoEmprestimo"
