@@ -11,19 +11,20 @@ if ($mysqli->connect_errno) {
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifica se o botão de adicionar foi clicado
+    // Verifica se o botão de remover foi clicado
     if (isset($_POST['ButEnviar']) && $_POST['ButEnviar'] == 'ENVIAR') {
         // Obtém o nome da turma do formulário
         $nomeDaTurma = $_POST['nomeDaTurma'];
 
-        // Insere o nome da turma no banco de dados
-        $inserirTurma = $mysqli->query("INSERT INTO turmas (turma) VALUES ('$nomeDaTurma')");
+        // Remove a turma do banco de dados
+        $removerTurma = $mysqli->query("DELETE FROM turmas WHERE turma = '$nomeDaTurma'");
 
-        if ($inserirTurma) {
-          header("Location: http://localhost:8090/public/adm.php");
+        if ($removerTurma) {
+            header("Location: http://localhost:8090/public/adm.php");
         } else {
-            echo "Erro ao adicionar turma: " . $mysqli->error;
+            echo "Erro ao remover turma: " . $mysqli->error;
         }
     }
 }
 ?>
+
