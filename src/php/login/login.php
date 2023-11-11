@@ -25,5 +25,6 @@ if (mysqli_num_rows($resultado) == 1) {
     $_SESSION['formNome'] = $LoginNome;
     header("Location: http://localhost:8090/public/geral.html");
 } else {
-    header("Location: https://www.youtube.com/watch?v=Wa0cHfc8yC8");
+    header("Location: http://localhost:8090/public"); 
+    
 }

@@ -41,9 +41,8 @@ nav a:hover::after{
 }
 .logo {
   margin-left: 30px;
-  margin-top: 10px;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
 }
 .container {
   text-align: center;
@@ -192,6 +191,7 @@ img {
   background-color: #1D3A43;
   border: 2px solid #69818D;
 }
+
 #emprestimo{
   margin-top: 18%;
   margin-right: 60%;
@@ -215,4 +215,9 @@ img {
 .scrollBar::-webkit-scrollbar-thumb {
   width: 7px;
   background: #5A636A;
+}
+
+.textosExplicacao {
+  font-size: 22px;
+  margin-bottom: 140px;
 }

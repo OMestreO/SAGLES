@@ -60,19 +60,5 @@
       </form>
     </main>
     <script src="../src/script/emprestimo.js"></script>
-    <script>
-      document.getElementById("butaoEmprestimo").addEventListener("click", function (event) {
-          event.preventDefault(); 
-          var nomeDoLivro = document.getElementById("inputFormEmprestimoNomeDoLivro").value;
-          if (bookExists(nomeDoLivro)) {
-              document.getElementById("formEmprestimo").submit();
-          } else {
-              alert("O nome do livro que vai ser emprestado não foi encontrado! Verifique e tente novamente.");
-          }
-      });
-      function bookExists(bookName) {
-          return false; 
-      }
-  </script>
   </body>
 </html>
