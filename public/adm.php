@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,12 @@
   <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
   <title>Administração</title>
 </head>
+
 <body id="bodyAdm">
   <header class="cabeca">
     <form action="/public/geral.html">
-      <button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
+      <button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button>
+    </form>
   </header>
   <main id="mainAdm">
     <form method="POST" id="formAdm">
@@ -28,7 +31,6 @@
             <th class="th1">Turmas</th>
           </tr>
           <?php
-
           $hostname = "127.0.0.1:8090";
           $bancodedados = "sagles";
           $usuario = "root";
@@ -36,18 +38,33 @@
 
           $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
           if ($mysqli->connect_errno) {
-
             die("Connection failed: " . $mysqli->connect_error);
           }
 
-          $mostraTudo = mysqli_query($mysqli, 'SELECT turma FROM turmas;');
+          session_start();
 
-          while ($user_data = mysqli_fetch_assoc($mostraTudo)) {
-            echo "<tr>";
-            echo "<td>" . $user_data['turma'] . "</td>";
-            echo "<tr>";
+          //analisar se o id_biblioteca está definido na sessão
+          if (isset($_SESSION['id_biblioteca'])) {
+            $id_biblioteca = $_SESSION['id_biblioteca'];
+
+            // consulta  para obter as turmas associadas à biblioteca do usuário
+            $consultaTurmas = "SELECT turma FROM turmas WHERE id_biblioteca = $id_biblioteca";
+            $resultTurmas = $mysqli->query($consultaTurmas);
+
+            if ($resultTurmas) {
+              while ($turma = $resultTurmas->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $turma['turma'] . "</td>";
+                echo "</tr>";
+              }
+            } else {
+              echo "Erro ao buscar turmas: " . $mysqli->error;
+            }
+          } else {
+            echo "Erro: id_biblioteca não está definido na sessão.";
           }
           ?>
+
         </table>
       </div>
     </div>

@@ -13,7 +13,6 @@
 <body>
   <header class="cabeca">
 
-    <!-- FAZER O JS PRA IR PARA A PAGINA GERAL -->
     <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
 
   </header>
@@ -29,7 +28,6 @@
           <th class="thDataDeDevolucao">Data de devolução</th>
         </tr>
 
-        <!-- FIXME: DEIXAR A TABELA BONITA -->
         <?php
         $hostname = "127.0.0.1:8090";
         $bancodedados = "sagles";

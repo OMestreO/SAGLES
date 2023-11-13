@@ -8,6 +8,7 @@
   <link rel="icon" href="../src/img/logo2.ico" type="image/x-icon">
   <title>Adicionar</title>
 </head>
+
 <body id="bodyAdicionar">
   <header class="cabeca">
     <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
@@ -40,11 +41,15 @@
 
           $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
           if ($mysqli->connect_errno) {
-
             die("Connection failed: " . $mysqli->connect_error);
           }
 
-          $mostraTudo = mysqli_query($mysqli, 'SELECT titulo, nome_autor, quantidade, disponiveis FROM livro;');
+          // Obtém o id_biblioteca do usuário a partir da sessão
+          session_start();
+          $idBiblioteca = isset($_SESSION['id_biblioteca']) ? $_SESSION['id_biblioteca'] : 0;
+
+          // Modifica a consulta SQL para incluir o filtro por id_biblioteca
+          $mostraTudo = mysqli_query($mysqli, "SELECT titulo, nome_autor, quantidade, disponiveis FROM livro WHERE id_biblioteca = $idBiblioteca");
 
           while ($user_data = mysqli_fetch_assoc($mostraTudo)) {
             echo "<tr>";
@@ -61,5 +66,4 @@
   </main>
 </body>
 <script src="/src/script/testes.js"></script>
-
 </html>
