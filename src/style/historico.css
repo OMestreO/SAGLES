@@ -36,22 +36,7 @@ th:hover {
   background: green;
 }
 
-.buttonDev {
-  position: relative;
-  width: 300px;
-  background-color: #69818D;
-  color: #fff;
-  padding: 10px 20px;
-  border: 2px solid #AFB3B7;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 78px;
-  margin-left: 1045px;
-}
-.buttonDev:hover {
-  transition: ease-in-out 1s;
-  background-color: #1D3A43;
-  border: 2px solid #69818D;
+.navHistorico {
+  margin-left: 540px;
 }
 

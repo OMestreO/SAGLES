@@ -14,11 +14,18 @@
   <header class="cabeca">
 
     <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
+    <nav class="navHistorico">
+      <ul>
+        <li><a href="./emprestimo.php">Empréstimo</a></li>
+        <li><a href="./devolucao.php">Devolução</a></li>
+        <li><a href="./adicionar.php">Modificar Livros</a></li>
+        <li><a href="./adm.php">Administrar Turmas</a></li>
 
+      </ul>
+    </nav>
   </header>
   <main>
     <div class="planinhacontainer">
-      <form action="../public/devolucao.php"><button class="buttonDev">Devolução</button></form>
       <table border="1" id="tabela-dados" class="<?php echo $corFundo; ?>">
         <tr>
           <th class="thAluno">Aluno</th>

@@ -71,12 +71,28 @@
     color: #AFB3B7;
   }
 
+  .listaNome {
+    max-height: 100px;
+    overflow-y: auto;
+    font-size: 16px;
+  }
+
+  .listaLivro {
+    max-height: 100px;
+    overflow-y: auto;
+    font-size: 16px;
+  }
+
   #mensagemErro {
   color: red;
   font-weight: bold;
   font-size: 16px;
   display: none; 
     
+}
+
+.navEmprestimo {
+  margin-left: 700px;
 }
   
   

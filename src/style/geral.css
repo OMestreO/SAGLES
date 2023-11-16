@@ -1,44 +1,3 @@
-nav {
-  height: 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
-  z-index: 2;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-nav li {
-  margin-top: 5%;
-  margin-right: 20px;
-}
-nav a {
-  position: relative;
-  text-decoration: none;
-  color: #AFB3B7;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  padding: 0 10px;
-}
-nav a:hover{
-  color: #d3d7dd;
-}
-nav a::after {
-  content: "";
-  position: absolute;
-  background-color:#d3d7dd;
-  height: 3px;
-  width: 0;
-  left: 0;
-  bottom: -10px;
-  transition: 0.3s;
-}
-nav a:hover::after{
-  width: 100%;
-}
 .logo {
   margin-left: 30px;
   width: 70px;
@@ -72,16 +31,17 @@ p {
   align-items: center;
 }
 .box1{
-  background: linear-gradient(270deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
+  background: linear-gradient(90deg, #AFB3B7 20%, #69818D 55%, #2D4A53 70%, #132E35 75%);
 }
 .box2{
-  background: linear-gradient(90deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
+  background: linear-gradient(90deg, #132E35 10%, #2D4A53 20%, #69818D 40%, #AFB3B7 80%);
 }
 .box3{
-  background: linear-gradient(270deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
+  background: linear-gradient(90deg, #AFB3B7 20%, #69818D 55%, #2D4A53 70%, #132E35 75%);
+
 }
 .box4{
-  background: linear-gradient(90deg, #132E35 20%, #2D4A53 40%, #69818D 60%, #AFB3B7 70%, #5A636A 100%);
+  background: linear-gradient(90deg, #132E35 10%, #2D4A53 20%, #69818D 40%, #AFB3B7 80%);
 }
 .box1 h2,
 .box2 h2,

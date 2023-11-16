@@ -15,6 +15,15 @@
     <form action="/public/geral.html">
       <button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button>
     </form>
+    <nav class="navAdm">
+      <ul>
+        <li><a href="./emprestimo.php">Empréstimo</a></li>
+        <li><a href="./devolucao.php">Devolução</a></li>
+        <li><a href="./historico.php">Histórico</a></li>
+        <li><a href="./adicionar.php">Modificar Livros</a></li>
+
+      </ul>
+    </nav>
   </header>
   <main id="mainAdm">
     <form method="POST" id="formAdm">

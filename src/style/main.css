@@ -39,3 +39,48 @@ body {
   width: 78px;
   height: 78px;
 }
+
+nav {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 2;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+nav li {
+  margin-top: 5%;
+  margin-right: 20px;
+}
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: #AFB3B7;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  padding: 0 10px;
+}
+nav a:hover{
+  color: #d3d7dd;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  background-color:#d3d7dd;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+nav a:hover::after{
+  width: 100%;
+}
+
+
+

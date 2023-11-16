@@ -4,7 +4,7 @@
   }
   #formAdm {
     padding: 10px;
-    margin-left: 6%;
+    margin-left: 11%;
     width: 1200px;
     height: 220px;
     display: flex;
@@ -100,7 +100,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 6%;
+    margin-left: 11%;
     width: 1200px;
     border-collapse: separate;
     border-spacing: 0px;
@@ -124,6 +124,9 @@
     background: #5A636A;
   }
 
+  .navAdm{
+    margin-left: 764px;
+  }
   
   
   

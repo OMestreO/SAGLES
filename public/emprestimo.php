@@ -12,6 +12,15 @@
   <body>
     <header class="cabeca">
       <form action="/public/geral.html"><button><img class="logo" src="../src/img/logo.png" alt="" style="margin-top:-2px;"></button></form>
+      <nav class="navEmprestimo">
+      <ul>
+        <li><a href="./devolucao.php">Devolução</a></li>
+        <li><a href="./historico.php">Histórico</a></li>
+        <li><a href="./adicionar.php">Modificar Livros</a></li>
+        <li><a href="./adm.php">Administrar Turmas</a></li>
+
+      </ul>
+    </nav>
     </header>
     <main id="mainEmprestimo">
       <form
@@ -44,7 +53,6 @@
 
 <select class="inputFormEmprestimo" id="inputFormEmprestimoTurma" name="Turmas">
     <option disabled selected hidden>Selecione a turma</option>
-
     <!-- PHP para obter as opções das turmas -->
 
     <?php include_once "src/php/emprestimo/pegarTurma.php"; ?>
