@@ -18,7 +18,7 @@
   </header>
   <main id="mainAdm">
     <form method="POST" id="formAdm">
-      <input name="nomeDaTurma" type="text" class="inputFormAdm" id="nomeDaTurmaAdm" placeholder="Nome da turma" required>
+      <input name="nomeDaTurma" type="text" class="inputFormAdm" id="nomeDaTurmaAdm" placeholder="Nome da turma" maxlength="10" required>
       <button name="ButEnviar" id="butaoAdm" type="submit" value="ENVIAR" formaction="../src/php/adm/admBd.php">ADICIONAR</button>
       <button name="ButEnviar" id="butaoRemover" type="submit" value="ENVIAR" formaction="../src/php/adm/admRemover.php">REMOVER</button>
     </form>
@@ -47,7 +47,7 @@
           if (isset($_SESSION['id_biblioteca'])) {
             $id_biblioteca = $_SESSION['id_biblioteca'];
 
-            // consulta  para obter as turmas associadas à biblioteca do usuário
+            // consulta  para obter as turmas associadas ao usuário
             $consultaTurmas = "SELECT turma FROM turmas WHERE id_biblioteca = $id_biblioteca";
             $resultTurmas = $mysqli->query($consultaTurmas);
 
@@ -64,7 +64,6 @@
             echo "Erro: id_biblioteca não está definido na sessão.";
           }
           ?>
-
         </table>
       </div>
     </div>

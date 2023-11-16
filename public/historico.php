@@ -18,6 +18,7 @@
   </header>
   <main>
     <div class="planinhacontainer">
+      <form action="../public/devolucao.php"><button class="buttonDev">Devolução</button></form>
       <table border="1" id="tabela-dados" class="<?php echo $corFundo; ?>">
         <tr>
           <th class="thAluno">Aluno</th>

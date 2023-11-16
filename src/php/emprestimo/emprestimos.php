@@ -7,7 +7,7 @@ $senha = "";
 $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
 if ($mysqli->connect_errno) {
 
-  die("Connection failed: ". $mysqli->connect_error);
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
 if (isset($_POST["NomeDoAluno"])) {
@@ -34,8 +34,8 @@ $resultadoAluno = mysqli_query($mysqli, "SELECT * FROM aluno WHERE nome = '$nome
 $resultadoLivro = mysqli_query($mysqli, "SELECT * FROM livro WHERE titulo = '$nomeDoLivro' ");
 $resultadoTurma = mysqli_query($mysqli, "SELECT * FROM aluno WHERE turma = '$turma' AND nome = '$nomeDoAluno'");
 
-if(mysqli_num_rows($resultadoLivro) ==0) {
-    
+if (mysqli_num_rows($resultadoLivro) == 0) {
+
     exit();
 }
 
@@ -67,7 +67,6 @@ if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) ==
     mysqli_query($mysqli, "UPDATE livro SET disponiveis = '$calculo' WHERE titulo = '$nomeDoLivro'");
 
     header("Location: http://localhost:8090/public/emprestimo.html");
-
 } elseif (mysqli_num_rows($resultadoLivro) == 1) {
 
     $existeAlunoQuery = mysqli_query($mysqli, "SELECT id FROM aluno WHERE nome = '$nomeDoAluno' AND turma ='$turma'");
@@ -102,7 +101,6 @@ if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) ==
     mysqli_query($mysqli, "UPDATE livro SET disponiveis = '$calculo' WHERE titulo = '$nomeDoLivro'");
 
     header("Location: http://localhost:8090/public/emprestimo.php");
-
 } else {
 
     $existeAlunoQuery = mysqli_query($mysqli, "SELECT id FROM aluno WHERE nome = '$nomeDoAluno' AND turma ='$turma'");
@@ -129,6 +127,4 @@ if (mysqli_num_rows($resultadoAluno) == 1 && mysqli_num_rows($resultadoLivro) ==
     VALUES ('$idAluno','$codLivro','$dataDeEmprestimo','$dataDeEntrega')");
 
     $query = mysqli_query($mysqli, "SELECT disponiveis FROM livro WHERE titulo = '$nomeDoLivro'");
-
 }
-

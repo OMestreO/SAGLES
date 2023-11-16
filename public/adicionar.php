@@ -66,4 +66,29 @@
   </main>
 </body>
 <script src="/src/script/testes.js"></script>
+<script>
+    // Função para exibir a mensagem de confirmação ao clicar no botão REMOVER
+    function confirmarRemocao() {
+      // Obtém o botão que foi clicado
+      var botaoClicado = document.activeElement;
+
+      // Verifica se o botão clicado é o botão REMOVER
+      if (botaoClicado.id === 'butaoRemover') {
+        // Obtém a quantidade inserida pelo usuário
+        var quantidade = document.getElementById('quantidadeDoLivro').value;
+
+        // Exibe a mensagem de confirmação
+        var confirmacao = confirm("Tem certeza de que deseja remover " + quantidade + " livro(s) ?" + " Se ao remover essa quantia a quantidade total de livros chegar a zero, ele será removido do sistema. " + " Deseja continuar?");
+
+        // Retorna true se o usuário clicou em "OK" e false se clicou em "Cancelar"
+        return confirmacao;
+      }
+
+      // Se o botão clicado não for o botão REMOVER, permite a submissão do formulário
+      return true;
+    }
+
+    // Atribui a função confirmarRemocao ao evento onSubmit do formulário
+    document.getElementById('formAdicionar').onsubmit = confirmarRemocao;
+  </script>
 </html>

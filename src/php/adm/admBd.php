@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $hostname = "127.0.0.1:8090";
 $bancodedados = "sagles";
 $usuario = "root";
@@ -11,6 +9,8 @@ if ($mysqli->connect_errno) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
+session_start();
+
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica se o botão de adicionar foi clicado
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtém o nome da turma do formulário
         $nomeDaTurma = $_POST['nomeDaTurma'];
 
-        // Obtém o id_biblioteca da sessão (se existir)
+        // Obtém o id_biblioteca da sessão 
         $id_biblioteca = isset($_SESSION['id_biblioteca']) ? $_SESSION['id_biblioteca'] : null;
 
         if ($id_biblioteca !== null) {
@@ -40,3 +40,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } 
     }
 }
+?>

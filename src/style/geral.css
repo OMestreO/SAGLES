@@ -106,24 +106,24 @@ p {
   margin-right: 62%;
 }
 .box1 p{
-  width: 400px;
-  margin-top: -5%;
-  margin-right: 60%;
+  width: 550px;
+  margin-top: 3.5%;
+  margin-right: 42%;
 }
 .box2 p{
-  width: 400px;
-  margin-top: -5%;
-  margin-left: 60%;
+  width: 550px;
+  margin-top: 3.5%;
+  margin-left: 42%;
 }
 .box3 p{
-  width: 400px;
-  margin-top: -5%;
-  margin-right: 60%;
+  width: 550px;
+  margin-top: 3.5%;
+  margin-right: 42%;
 }
 .box4 p{
-  width: 400px;
-  margin-top: -5%;
-  margin-left: 60%;
+  width: 550px;
+  margin-top: 3.5%;
+  margin-left: 42%;
 }
 .imagem1,
 .imagem2,
@@ -194,19 +194,19 @@ img {
 
 #emprestimo{
   margin-top: 18%;
-  margin-right: 60%;
+  margin-right: 42%;
 }
 #devolver{
   margin-top: 18%;
-  margin-left: 60%;
+  margin-left: 42%;
 }
 #historico{
   margin-top: 18%;
-  margin-right: 60%;
+  margin-right: 42%;
 }
 #adicionar{
   margin-top: 18%;
-  margin-left: 60%;
+  margin-left: 42%;
 }
 .scrollBar::-webkit-scrollbar {
   width: 7px;

@@ -15,12 +15,12 @@
     <main>
         <div class="cards">
             <div class="cardImagem">
-                <img src="../src/img/logo.png" alt="Logo SAGLES" style="width: 30vw; height: 70vh;"> 
+                <img src="../src/img/logo.png" alt="Logo SAGLES" style="width: 30vw; height: 70vh;">
             </div>
 
             <div class=" cardLogin">
                 <h1>LOGIN</h1>
-                <form name="formLogin" method="POST" action="../src/php/login/login.php">
+                <form name="formLogin" method="POST" action="../src/php/login/login.php" onsubmit="return validarFormulario()">
                     <label for="formNome">Username</label>
                     <input class="input-nome" type="text" placeholder="Nome" name="formNome" maxlength="20" required>
                     <label for="formSenha">Password</label>
@@ -28,12 +28,30 @@
                         required id="senhaInput">
                     <img class="imagemOlho" src="https://cdn-icons-png.flaticon.com/512/158/158746.png" alt="Ícone Olho"
                         onclick="MostrarSenha()">
+                    <input type="checkbox" id="aceitarTermos">
+                    <label for="aceitarTermos">Eu li e aceito os <a href="https://sites.google.com/view/sagles/início" class="termosUs">Termos De Uso</a> </label>
+
                     <input class="enviar" type="submit" value="Enviar">
+                    <a href="https://sites.google.com/view/sagles/início" class="termosUso">Termos De Uso</a>
 
                 </form>
+
             </div>
         </div>
     </main>
     <script src="/src/script/login.js"></script>
+    <script>
+        function validarFormulario() {
+            var aceitarTermosCheckbox = document.getElementById('aceitarTermos');
+    
+            if (!aceitarTermosCheckbox.checked) {
+                alert("Você deve aceitar os Termos de Uso para realizar o login.");
+                return false; // Impede o envio do formulário
+            }
+    
+            return true; // Permite o envio do formulário
+        }
+    </script>
 </body>
+
 </html>

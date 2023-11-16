@@ -82,7 +82,8 @@
             echo '</form>';
           } else {
 
-            echo '<img class="imagemDevolver" src="icone_desabilitado.png" alt="Ícone desabilitado">';
+            echo '<span class="textoDevolver" style="font-size: 16px;">Livro devolvido ☑️</span>';
+
           }
           echo '</td>';
           echo '</tr>';

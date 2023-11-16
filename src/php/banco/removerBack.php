@@ -47,9 +47,16 @@ if (isset($_POST["nomeDoLivro"]) && isset($_POST["nomeDoAutor"]) && isset($_POST
 
         // Atualiza a quantidade e a quantidade disponível
         mysqli_query($mysqli, "UPDATE livro SET quantidade = '$novaQuantidade', disponiveis = '$novaQuantidadeDisponivel' WHERE titulo = '$nomeDoLivro' AND nome_autor = '$nomeDoAutor' AND id_biblioteca = $idBiblioteca");
+
+        // Verifica se a nova quantidade é menor ou igual a zero e remove o livro se for o caso
+        if ($novaQuantidade <= 0) {
+            mysqli_query($mysqli, "DELETE FROM livro WHERE titulo = '$nomeDoLivro' AND nome_autor = '$nomeDoAutor' AND id_biblioteca = $idBiblioteca");
+        }
+
         header("Location: http://localhost:8090/public/adicionar.php");
     } else {
         // O livro não existe
         echo "Livro não encontrado.";
     }
 }
+?>
